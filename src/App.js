@@ -10,6 +10,11 @@ import Location from './pages/locationPage/Location';
 import Stays from './pages/staysPage/Stays';
 import Search from './pages/searchPage/Search';
 import Stay from './pages/stayPage/Stay';
+import Attraction from './pages/attractionPage/Attraction';
+import Dining from './pages/diningPage/Dining';
+import Attractions from './pages/attractionsPage/Attractions';
+import Dinings from './pages/diningsPage/Dinings';
+import CreateAccount from './pages/createAccountPage/CreateAccount';
 
 function App() {
   return (
@@ -26,7 +31,17 @@ function App() {
 
           <Route path='/search' element={<Search />} />
 
-          <Route path='/:location/:stays/:place' element={<Stay />} />
+          <Route path='/:location/stay/:place' element={<Stay />} />
+
+          <Route path='/:location/attraction/:place' element={<Attraction />} />
+
+          <Route path='/:location/dining/:place' element={<Dining />} />
+
+          <Route path='/attractions' element={<Attractions />} />
+
+          <Route path='/dinings' element={<Dinings />} />
+
+          <Route path='/createAccount' element={<CreateAccount />} />
 
           <Route path='/about' element={<h1>about page</h1>} />
         </Routes>

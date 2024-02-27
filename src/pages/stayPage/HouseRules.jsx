@@ -10,72 +10,24 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 const HouseRules = ({ data }) => {
 
 
-    const houseRulesIcons = [
-        {
-            name: 'Check-In',
-            icon: 'fa-arrow-right-to-bracket',
-        },
-        {
-            name: 'Check-Out',
-            icon: 'fa-arrow-right-from-bracket',
-        }, {
-            name: 'Cancelation/Prepayment',
-            icon: 'fa-circle-info',
-        },
-        {
-            name: 'Children & Beds',
-            icon: 'fa-people-roof',
-        },
-        {
-            name: 'Age Restriction',
-            icon: 'fa-person',
-        },
-        {
-            name: 'Smoking',
-            icon: 'fa-smoking',
-        },
-        {
-            name: 'Parties',
-            icon: 'fa-champagne-glasses',
-        },
-        {
-            name: 'Quiet Hours',
-            icon: 'fa-moon',
-        },
-        {
-            name: 'Pets',
-            icon: 'fa-paw'
-        }
-
-
-
-
-
-
-
-
-
-
-
-    ]
-
     return (
         <>
             <Container>
-                <h1>House Rules</h1>
+                <h1 className='text-center text-md-start'>House Rules</h1>
                 <hr />
-                {houseRulesIcons.map((rule) => (
-                    <Row>
+                {data.houserules.map((rule) => (
+                    <Row className='border pt-2'>
 
-                        <Col className='fs-5 col-4'>
+                        <Col className='fs-6 col-5'>
                             <FontAwesomeIcon icon={rule.icon} className='text-center' />
-                            <span className='ms-2 fw-bold'>{rule.name}</span>
+                            <span className='ms-2'>{rule.category}</span>
                         </Col>
 
 
-                        <Col>
+                        <Col className='col-7 css-fix'>
+                            <p>{rule.text}</p>
                         </Col>
-                        <hr />
+
                     </Row>
 
                 ))}

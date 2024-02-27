@@ -16,7 +16,7 @@ const ImageBlock = ({ children, array2, array3 }) => {
 
             <Container >
 
-                <Row className='d-flex flex-column flex-md-row'>
+                <Row className='d-flex flex-column flex-md-row '>
 
                     {array2.map((location) => (
                         <Col className='mb-2 col-md-6' onClick={() => navigate(`/locations/${location.name}`)} style={{ cursor: 'pointer' }}>

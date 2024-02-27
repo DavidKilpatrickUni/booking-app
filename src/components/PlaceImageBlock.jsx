@@ -5,6 +5,8 @@ import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
+import PlaceSwiperWithThumbs from './PlaceSwiperWithThumbs';
+
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/free-mode';
@@ -47,7 +49,7 @@ const PlaceImageBlock = ({ children, data }) => {
 
                 <Container >
 
-                    <Row className='mt-2'>
+                    <Row className='mt-2 rounded-5'>
                         <Col className='col-md-4 col-6'>
                             <Row className='mb-1 mb-md-3'>
                                 <Col className='col-12'
@@ -124,71 +126,13 @@ const PlaceImageBlock = ({ children, data }) => {
                 </Modal.Header>
                 <Modal.Body>
 
-                    <Swiper
-                        initialSlide={slide}
-                        style={{
-                            '--swiper-navigation-color': '#fff',
-                            '--swiper-pagination-color': '#fff',
-                        }}
-                        pagination={{
-                            el: '.swiper-custom-pagination',
-                            type: 'fraction'
-                        }}
-
-                        spaceBetween={10}
-                        navigation={true}
-                        thumbs={{ swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null }}
-                        modules={[Pagination, FreeMode, Navigation, Thumbs]}
-                        className="mySwiper2 text-white fw-bold"
-                    >
-
-                        {data.images.map((pic) => (
-                            <SwiperSlide>
-                                <img src={pic} alt='' className='img-fluid' />
-                            </SwiperSlide>
-                        ))}
-
-
-                    </Swiper>
-                    <div className='swiper-custom-pagination text-center'></div>
-                    <Swiper
-                        breakpoints={{
-                            640: {
-                                slidesPerView: 4,
-                                spaceBetween: 10,
-                            },
-                            768: {
-                                slidesPerView: 5,
-                                spaceBetween: 10,
-                            },
-                            1024: {
-                                slidesPerView: 5,
-                                spaceBetween: 10,
-                            },
-                        }}
-                        onSwiper={setThumbsSwiper}
-                        spaceBetween={10}
-                        slidesPerView={3}
-                        freeMode={true}
-                        watchSlidesProgress={true}
-                        modules={[FreeMode, Navigation, Thumbs]}
-                        className="mySwiper mt-2"
-                    >
-                        {data.images.map((pic) => (
-                            <SwiperSlide>
-                                <img src={pic} alt='' className='img-fluid' />
-                            </SwiperSlide>
-                        ))}
-
-                    </Swiper>
-
+                    <PlaceSwiperWithThumbs slide={slide} data={data} />
 
                 </Modal.Body>
                 <Modal.Footer>
                     <Button className='btn-primary' onClick={handleClose}>
                         Close
                     </Button>
-
                 </Modal.Footer>
             </Modal>
         </>

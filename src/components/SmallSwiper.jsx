@@ -10,10 +10,11 @@ import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 
 import { useNavigate } from 'react-router-dom'
+import ReviewCard from './ReviewCard';
 
 
 
-const SmallSwiper = ({ children, array }) => {
+const SmallSwiper = ({ children, array, reviews }) => {
 
     const navigate = useNavigate()
 
@@ -48,6 +49,7 @@ const SmallSwiper = ({ children, array }) => {
             >
                 {array.map((location) => (
                     <SwiperSlide>
+
                         <Card style={{ cursor: 'pointer' }} className='h-100' onClick={() => navigate(`/locations/${location.name}`)}>
                             <Card.Img variant="top" src={location.image} />
                             <Card.Footer>
@@ -55,11 +57,14 @@ const SmallSwiper = ({ children, array }) => {
                                 <small>{location.places} Places</small>
                             </Card.Footer>
                         </Card>
+
+
                     </SwiperSlide>
+
 
                 ))}
             </Swiper>
-        </div>
+        </div >
     )
 }
 

@@ -10,3 +10,15 @@ img {
 .mySwiper .swiper-slide-thumb-active {
     opacity: 1;
 }
+
+.css-fix {
+    white-space: pre-wrap;
+    /* or pre-line */
+}
+
+@media only screen and (max-width: 600px) {
+    .myTabs {
+        max-Height: 400px !important
+    }
+}
+

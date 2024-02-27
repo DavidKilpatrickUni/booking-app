@@ -13,10 +13,18 @@ import { faFortAwesome } from '@fortawesome/free-brands-svg-icons'
 import { faCircleUser, faCompass } from '@fortawesome/free-regular-svg-icons'
 
 
+import { useState } from 'react';
 
+import Modal from 'react-bootstrap/Modal';
 
 
 const SiteNavbar = () => {
+
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
     return (
         // <>
         //     hello
@@ -33,8 +41,9 @@ const SiteNavbar = () => {
                     <Nav>
                         <Nav.Link>
                             <Link>
-                                <Button>
-                                    <FontAwesomeIcon icon={faCircleUser} className='fs-1' />
+                                <Button onClick={handleShow}>
+                                    <FontAwesomeIcon icon={faCircleUser} className='fs-1'
+                                     />
                                 </Button>
                             </Link>
                         </Nav.Link>
@@ -104,7 +113,7 @@ const SiteNavbar = () => {
 
                             <Link
                                 className='text-white text-decoration-none fs-3 '
-                                to='/dining'
+                                to='/dinings'
                             >
                                 <FontAwesomeIcon icon={faUtensils} className='me-2' />
                                 Dining
@@ -113,6 +122,62 @@ const SiteNavbar = () => {
                     </Col>
                 </Row>
             </Container>
+
+
+                 <Modal show={show} onHide={handleClose}>
+                    <Modal.Header >
+                        <Container>
+                            <Row className='text-center'>
+                                <Col >
+                                    <h2>Login</h2>
+                                </Col>
+                            </Row>
+                        </Container>
+                    </Modal.Header>
+                    <Modal.Body>
+   
+                    <form>
+                        <div className="form-group my-2">
+                            <label for="email">
+                                Email address
+                            </label>
+                            <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Email"/>
+                        </div>
+                        <div className="form-group my-2">
+                            <label for="password">
+                                Password
+                            </label>
+                            <input type="password" class="form-control" id="password" placeholder="Password"/>
+                        </div>
+                        <div className='d-flex justify-content-center my-4'>
+                             <Button class="btn btn-primary ">Login</Button>
+                        </div>
+        
+                    </form>
+
+                    </Modal.Body>
+                    <Modal.Footer>
+            
+                        <Container>
+                            <Row className='text-center'>
+                                <Col >
+                                    <h5>New To ExploreApp?</h5>
+                                </Col>
+                            </Row>
+                                 <Row className='text-center mt-2'>
+                                <Col >
+
+                                        <Link to='/createAccount' className='btn btn-primary' onClick={handleClose}>
+                                                  Create Account
+                                        </Link>
+                                  
+
+                                </Col>
+                            </Row>
+                        </Container>
+                    </Modal.Footer>
+                </Modal>
+
         </section>
 
     );

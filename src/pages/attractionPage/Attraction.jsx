@@ -2,44 +2,111 @@ import React from 'react'
 import Col from 'react-bootstrap/Col'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
-import Button from 'react-bootstrap/Button'
-import BigSwiper from '../../components/BigSwiper'
-import SmallSwiper from '../../components/SmallSwiper'
-import InteractiveMap from '../../components/InteractiveMap'
-import Nav from 'react-bootstrap/Nav';
-
-
-import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet'
-import * as L from "leaflet";
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { fas } from '@fortawesome/free-solid-svg-icons'
-import { library } from '@fortawesome/fontawesome-svg-core'
-
-
-import AdvertBar from '../../components/AdvertBar'
-
 
 import Title from '../../components/Title'
 
+import ReviewBars from '../../components/ReviewBars'
+import InteractiveMap from '../../components/InteractiveMap'
+import PlaceSwiper from '../../components/PlaceSwiper'
+import PlaceImageBlock2 from '../../components/PlaceImageBlock2'
+import ReviewCardHolder from '../../components/ReviewCardHolder'
+import ReviewScore from '../../components/ReviewScore'
 
-const Location = () => {
 
+const Attraction = () => {
 
-    const array4 = [
-        {
-            message: 'Aberdeen Hotel',
-            image: 'https://images.pexels.com/photos/707581/pexels-photo-707581.jpeg'
-        },
-        {
-            message: 'Aberdeen big wheel',
-            image: 'https://images.pexels.com/photos/1005774/pexels-photo-1005774.jpeg'
-        },
-        {
-            message: 'Aberdeen restaurant',
-            image: 'https://images.pexels.com/photos/291767/pexels-photo-291767.jpeg'
+    const data =
+    {
+        name: 'The Polwarth Apartment',
+        address: '112 Polwarth Gardens Apartment 5, Edinburgh, EH11 1LH, United Kingdom',
+        text: `You're eligible for a Genius discount at The Polwarth Apartment! To save at this property, all you have to do is sign in.
+
+The Polwarth Apartment in Edinburgh offers accommodation with free WiFi, 1.8 km from EICC, 2.7 km from National Museum of Scotland and 2.9 km from The Real Mary King's Close. The property is set 3.2 km from University of Edinburgh, 3.2 km from Camera Obscura and World of Illusions and 3.3 km from Royal Mile. Edinburgh Castle is 3.4 km from the apartment and Murrayfield Stadium is 3.4 km away.
+
+The spacious apartment features 2 bedrooms, a flat-screen TV with streaming services, a fully equipped kitchen with an oven and a microwave, a washing machine, and 1 bathroom with a walk-in shower. Towels and bed linen are featured in the apartment. This apartment is allergy-free and non-smoking.
+
+Edinburgh Waverley station is 4.3 km from the apartment, while Edinburgh Zoo is 4.7 km away. The nearest airport is Edinburgh Airport, 10 km from The Polwarth Apartment.
+
+Couples particularly like the location — they rated it 9.5 for a two-person trip.`,
+
+        highlights: [
+            {
+                name: 'Wifi',
+                icon: 'fa-wifi'
+            },
+            {
+                name: 'Bath',
+                icon: 'fa-bath'
+            },
+            {
+                name: 'Air Conditioning',
+                icon: 'fa-fan'
+            },
+            {
+                name: 'Non-Smoking ',
+                icon: 'fa-ban-smoking'
+            },
+            {
+                name: 'Deposit Box',
+                icon: 'fa-vault'
+            },
+            {
+                name: 'Heating',
+                icon: 'fa-fire'
+            },
+            {
+                name: 'Lift',
+                icon: 'fa-elevator'
+            },
+            {
+                name: 'Parking',
+                icon: 'fa-square-parking'
+            }
+        ],
+
+        images: [
+            'https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg',
+            'https://images.pexels.com/photos/271618/pexels-photo-271618.jpeg',
+            'https://images.pexels.com/photos/189333/pexels-photo-189333.jpeg',
+            'https://images.pexels.com/photos/3315291/pexels-photo-3315291.jpeg',
+            'https://images.pexels.com/photos/14930629/pexels-photo-14930629.jpeg',
+            'https://images.pexels.com/photos/14590688/pexels-photo-14590688.jpeg',
+            '       https://images.pexels.com/photos/14590695/pexels-photo-14590695.jpeg',
+            'https://images.pexels.com/photos/2506990/pexels-photo-2506990.jpeg'
+        ],
+
+        review: {
+            average: 8.5,
+            text: 'Very Good',
+            amount: 139,
+            categories: [
+                {
+                    category: 'Staff',
+                    score: 9.3
+                },
+                {
+                    category: 'Facilities',
+                    score: 8.8
+                },
+                {
+                    category: 'Cleanliness',
+                    score: 9.1
+                },
+                {
+                    category: 'Comfort',
+                    score: 9.0
+                },
+                {
+                    category: 'Value For Money',
+                    score: 8.6
+                },
+                {
+                    category: 'Location',
+                    score: 8.9
+                }
+            ]
         }
-    ]
+    }
 
     const featured =
     {
@@ -233,200 +300,145 @@ const Location = () => {
         ]
     }
 
-    const array = [
+    const reviews = [
         {
-            name: 'Edinburgh',
-            image: 'https://images.pexels.com/photos/7813912/pexels-photo-7813912.jpeg',
-            places: 1034
+            reviewer: 'jim',
+            country: 'Spain',
+            countryCode: 'ES',
+            profilePic: "https://randomuser.me/api/portraits/men/70.jpg",
+            group: 'solo',
+            duration: '3 days',
+            date: '03 May',
+            score: '8.7',
+            subject: 'Great',
+            text: 'Good attraction',
+            good: 'Price',
+            bad: 'Queue',
+            posted: '21 May',
+            helpful: 0,
         },
         {
-            name: 'London',
-            image: 'https://images.pexels.com/photos/258117/pexels-photo-258117.jpeg',
-            places: 1564
+            reviewer: 'gary',
+            country: 'Switzerland',
+            countryCode: 'CH',
+            profilePic: "https://randomuser.me/api/portraits/men/71.jpg",
+            group: 'family',
+            duration: '3 days',
+            date: '03 May',
+            score: '8.7',
+            subject: 'Good',
+            text: 'Good attraction',
+            good: 'Price',
+            bad: 'Queue',
+            posted: '21 May',
+            helpful: 0,
         },
         {
-            name: 'Cardiff',
-            image: 'https://images.pexels.com/photos/1088291/pexels-photo-1088291.jpeg',
-            places: 894
+            reviewer: 'john',
+            country: 'USA',
+            countryCode: 'US',
+            profilePic: "https://randomuser.me/api/portraits/men/72.jpg",
+            group: 'couple',
+            duration: '3 days',
+            date: '03 May',
+            score: '8.7',
+            subject: 'Great',
+            text: 'Good attraction',
+            good: 'Price',
+            bad: 'Queue',
+            posted: '21 May',
+            helpful: 0,
         },
         {
-            name: 'Manchester',
-            image: 'https://images.pexels.com/photos/15023016/pexels-photo-15023016/free-photo-of-aerial-view-of-manchester-town-hall.jpeg',
-            places: 970
+            reviewer: 'craig',
+            country: 'sweden',
+            countryCode: 'SE',
+            profilePic: "https://randomuser.me/api/portraits/men/73.jpg",
+            group: 'friends',
+            duration: '3 days',
+            date: '03 May',
+            score: '8.7',
+            subject: 'Poor',
+            text: 'Good attraction',
+            good: 'Price',
+            bad: 'Queue',
+            posted: '21 May',
+            helpful: 0,
         },
         {
-            name: 'Newcastle',
-            image: 'https://images.pexels.com/photos/2893285/pexels-photo-2893285.jpeg',
-            places: 811
+            reviewer: 'ted',
+            country: 'Zimbabwe',
+            countryCode: 'ZW',
+            profilePic: "https://randomuser.me/api/portraits/men/74.jpg",
+            group: 'friends',
+            duration: '3 days',
+            date: '03 May',
+            score: '8.7',
+            subject: 'Average',
+            text: 'Good attraction',
+            good: 'Price',
+            bad: 'Queue',
+            posted: '21 May',
+            helpful: 0,
         },
-        {
-            name: 'Glasgow',
-            image: 'https://images.pexels.com/photos/11142526/pexels-photo-11142526.jpeg',
-            places: 1294
-        },
-        {
-            name: 'York',
-            image: 'https://images.pexels.com/photos/18381522/pexels-photo-18381522/free-photo-of-historic-york-minster-in-england.jpeg',
-            places: 768
-        }
     ]
 
-
-
-
     return (
-        < >
-
+        <>
             <Container>
                 <Row>
-                    <Col>
-                        <Title>
-                            <h1>{featured.location}</h1>
+                    <Col >
+                        <Title >
+                            <h1>
+                                Some Attraction
+                            </h1>
+                            <p>
+                                Great place to visit
+                            </p>
                         </Title>
                     </Col>
                 </Row>
                 <Row>
-                    <Col>
-                        <Nav justify defaultActiveKey="/home">
-                            <Nav.Item>
-                                <Nav.Link href="#highlights">Highlights</Nav.Link>
-                            </Nav.Item>
-                            <Nav.Item>
-                                <Nav.Link
-                                    href="#map" >Map</Nav.Link>
-                            </Nav.Item>
-                            <Nav.Item>
-                                <Nav.Link
-                                    href="#stays" >Stays</Nav.Link>
-                            </Nav.Item>
-                            <Nav.Item>
-                                <Nav.Link
-                                    href="#attractions" >Attractions</Nav.Link>
-                            </Nav.Item>
-                            <Nav.Item>
-                                <Nav.Link
-                                    href="#dining" >Dining</Nav.Link>
-                            </Nav.Item>
-                        </Nav>
+                    <Col className='d-block d-lg-none'>
+                        <PlaceSwiper data={data} />
+
+                    </Col>
+                    <Col className='d-none d-lg-block'>
+
+                        <PlaceImageBlock2 data={data} />
                     </Col>
                 </Row>
                 <hr />
-                <Row>
-                    <Col>
-                        <p>{featured.text}</p>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col id='highlights'>
-                        <BigSwiper array4={array4}>
-                            <h1>Highlights</h1>
-                            <p>Best {featured.location} Has To Offer</p>
-                        </BigSwiper>
-                    </Col>
-                </Row>
-                <hr />
-                <h1 id='map'>
-                    Interactive Map
-                </h1>
-                <p>
-                    Have A Look At The Area And View Some Of Our Suggested Places
-                </p>
                 <Row>
                     <Col>
                         <InteractiveMap featured={featured} />
-                        {/* <MapContainer
-                            style={{ height: '100%', width: '100%' }}
-                            center={[featured.lat, featured.lng]}
-                            zoom={13}
-                            scrollWheelZoom={false}
-                        >
-                            <TileLayer
-                                attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-                                url='https://{s}.tile.openstreetmap.de/tiles/osmde/{z}/{x}/{y}.png'
-                            />
-
-
-                            <Marker position={[featured.lat, featured.lng]} >
-                                <Popup>
-                                    Location Centre
-                                </Popup>
-                            </Marker>
-
-                            {featured.hotelMarkers.map((mark) => (
-                                <Marker position={[mark.lat, mark.lng]} icon={greenIcon} >
-                                    <Popup>
-                                        {mark.placeName}
-
-                                    </Popup>
-                                </Marker>
-                            ))}
-
-                            {featured.attractionMarkers.map((mark) => (
-                                <Marker position={[mark.lat, mark.lng]} icon={redIcon} >
-                                    <Popup>
-                                        {mark.placeName}
-
-                                    </Popup>
-                                </Marker>
-                            ))}
-
-                            {featured.diningMarkers.map((mark) => (
-                                <Marker position={[mark.lat, mark.lng]} icon={yellowIcon} >
-                                    <Popup>
-                                        <h6>
-                                            {mark.placeName}
-                                        </h6>
-                                        <Link to='/'>
-                                            View
-                                        </Link>
-                                    </Popup>
-
-                                </Marker>
-                            ))}
-
-
-                        </MapContainer> */}
+                    </Col>
+                </Row>
+                <hr />
+                <Row>
+                    <Col>
+                        <ReviewScore data={data}>
+                            <h1>Reviews</h1>
+                        </ReviewScore>
                     </Col>
                 </Row>
                 <Row>
                     <Col>
-                        <AdvertBar adverts={featured.stats} />
+                        <ReviewBars data={data}>
+                        </ReviewBars>
                     </Col>
                 </Row>
                 <hr />
                 <Row>
-                    <Col id='stays'>
-                        <SmallSwiper array={array}>
-                            <h1>Stays</h1>
-                        </SmallSwiper>
+                    <Col>
+                        <ReviewCardHolder reviews={reviews} data={data} />
                     </Col>
                 </Row>
-                <hr />
-                <Row>
-                    <Col id='attractions'>
-                        <SmallSwiper array={array}>
-                            <h1>Attractions</h1>
-                        </SmallSwiper>
-                    </Col>
-                </Row>
-                <hr />
-                <Row>
-                    <Col id='dining'>
-                        <SmallSwiper array={array}>
-                            <h1>Dining</h1>
-                        </SmallSwiper>
-                    </Col>
-                </Row>
-
-
-
 
             </Container>
-
-
-
-        </ >
+        </>
     )
 }
 
-export default Location
+export default Attraction
+
