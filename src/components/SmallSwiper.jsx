@@ -16,7 +16,10 @@ import ReviewCard from './ReviewCard';
 
 const SmallSwiper = ({ children, array, reviews }) => {
 
+
     const navigate = useNavigate()
+
+    //console.log(array)
 
     return (
         <div className='text-center text-md-start'>
@@ -50,7 +53,7 @@ const SmallSwiper = ({ children, array, reviews }) => {
                 {array.map((location) => (
                     <SwiperSlide>
 
-                        <Card style={{ cursor: 'pointer' }} className='h-100' onClick={() => navigate(`/locations/${location.name}`)}>
+                        <Card style={{ cursor: 'pointer' }} className='h-100' onClick={() => navigate(`/${location.location}/${location.category}/${location.name}/${location.refID}`)}>
                             <Card.Img variant="top" src={location.image} />
                             <Card.Footer>
                                 <p className='m-0 fw-bold fs-6'>{location.name}</p>

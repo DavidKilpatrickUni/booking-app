@@ -10,6 +10,8 @@ import { fas } from '@fortawesome/free-solid-svg-icons'
 import { library } from '@fortawesome/fontawesome-svg-core'
 
 const MapPopup = ({ mark }) => {
+
+    console.log(mark)
     return (
         <>
             <Container>
@@ -18,7 +20,7 @@ const MapPopup = ({ mark }) => {
                         <img src={mark.image} alt='' className='img-fluid rounded-3' />
                     </Col>
                     <Col className='col-7 my-0'>
-                        <Link to={`/${mark.location}/${mark.category}/${mark.placeName}`}>
+                        <Link to={`/${mark.location}/${mark.category}/${mark.name}`}>
                             <h6 className='fw-bold'>{mark.placeName}</h6>
                         </Link>
 

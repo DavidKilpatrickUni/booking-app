@@ -1,4 +1,7 @@
 import React from 'react'
+import { useState, useEffect } from 'react'
+import { useParams } from 'react-router-dom'
+
 import Col from 'react-bootstrap/Col'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
@@ -22,9 +25,102 @@ import AdvertBar from '../../components/AdvertBar'
 
 import Title from '../../components/Title'
 
+import { doc, getDoc, updateDoc, collection, getDocs, query, where, orderBy, deleteDoc } from 'firebase/firestore'
+import { db } from '../../firebase.config'
+
+
+import Spinner from 'react-bootstrap/Spinner';
 
 const Location = () => {
 
+    const params = useParams()
+
+    const [myData, setMyData] = useState(null)
+    const [myStays, setMyStays] = useState(null)
+    const [myAttractions, setMyAttractions] = useState(null)
+    const [myDinings, setMyDinings] = useState(null)
+    const [loading, setLoading] = useState(true)
+
+
+
+    useEffect(() => {
+
+        const fetchData = async () => {
+
+            const docRef = doc(db, "locations", params.id);
+            const docSnap = await getDoc(docRef);
+
+            if (docSnap.exists()) {
+                // console.log("Document data:", docSnap.data());
+                setMyData(
+
+                    docSnap.data()
+
+                )
+
+            } else {
+                // docSnap.data() will be undefined in this case
+                console.log("No such document!");
+            }
+
+
+
+            const stayQ = query(collection(db, "listings"), where("location", "==", params.location));
+
+            const staySnapshot = await getDocs(stayQ);
+
+            let stays = []
+
+            staySnapshot.forEach((doc) => {
+                // doc.data() is never undefined for query doc snapshots
+                // console.log(doc.id, " => ", doc.data());
+                stays.push(doc.data())
+
+            });
+
+            const attractionQ = query(collection(db, "attractionList"), where("location", "==", params.location));
+
+            const attractionSnapshot = await getDocs(attractionQ);
+
+            let attractions = []
+
+            attractionSnapshot.forEach((doc) => {
+                // doc.data() is never undefined for query doc snapshots
+                // console.log(doc.id, " => ", doc.data());
+                attractions.push(doc.data())
+
+            });
+
+            const diningQ = query(collection(db, "diningList"), where("location", "==", params.location));
+
+            const diningSnapshot = await getDocs(diningQ);
+
+            let dinings = []
+
+            diningSnapshot.forEach((doc) => {
+                // doc.data() is never undefined for query doc snapshots
+                // console.log(doc.id, " => ", doc.data());
+                dinings.push(doc.data())
+
+            });
+
+            setMyStays(stays)
+            setMyAttractions(attractions)
+            setMyDinings(dinings)
+            setLoading(false)
+        }
+
+        fetchData()
+
+    }, [])
+
+
+
+
+
+    console.log(myData)
+    // console.log(myStays)
+    //console.log(myAttractions)
 
     const array4 = [
         {
@@ -276,65 +372,65 @@ const Location = () => {
 
     return (
         < >
-
-            <Container>
-                <Row>
-                    <Col>
-                        <Title>
-                            <h1>{featured.location}</h1>
-                        </Title>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col>
-                        <Nav justify defaultActiveKey="/home">
-                            <Nav.Item>
-                                <Nav.Link href="#highlights">Highlights</Nav.Link>
-                            </Nav.Item>
-                            <Nav.Item>
-                                <Nav.Link
-                                    href="#map" >Map</Nav.Link>
-                            </Nav.Item>
-                            <Nav.Item>
-                                <Nav.Link
-                                    href="#stays" >Stays</Nav.Link>
-                            </Nav.Item>
-                            <Nav.Item>
-                                <Nav.Link
-                                    href="#attractions" >Attractions</Nav.Link>
-                            </Nav.Item>
-                            <Nav.Item>
-                                <Nav.Link
-                                    href="#dining" >Dining</Nav.Link>
-                            </Nav.Item>
-                        </Nav>
-                    </Col>
-                </Row>
-                <hr />
-                <Row>
-                    <Col>
-                        <p>{featured.text}</p>
-                    </Col>
-                </Row>
-                <Row>
+            {!loading &&
+                <Container>
+                    <Row>
+                        <Col>
+                            <Title>
+                                <h1>{myData.location}</h1>
+                            </Title>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col>
+                            <Nav justify defaultActiveKey="/home">
+                                <Nav.Item>
+                                    <Nav.Link href="#highlights">Highlights</Nav.Link>
+                                </Nav.Item>
+                                <Nav.Item>
+                                    <Nav.Link
+                                        href="#map" >Map</Nav.Link>
+                                </Nav.Item>
+                                <Nav.Item>
+                                    <Nav.Link
+                                        href="#stays" >Stays</Nav.Link>
+                                </Nav.Item>
+                                <Nav.Item>
+                                    <Nav.Link
+                                        href="#attractions" >Attractions</Nav.Link>
+                                </Nav.Item>
+                                <Nav.Item>
+                                    <Nav.Link
+                                        href="#dining" >Dining</Nav.Link>
+                                </Nav.Item>
+                            </Nav>
+                        </Col>
+                    </Row>
+                    <hr />
+                    <Row>
+                        <Col>
+                            <p>{myData.text}</p>
+                        </Col>
+                    </Row>
+                    {/* <Row>
                     <Col id='highlights'>
                         <BigSwiper array4={array4}>
                             <h1>Highlights</h1>
                             <p>Best {featured.location} Has To Offer</p>
                         </BigSwiper>
                     </Col>
-                </Row>
-                <hr />
-                <h1 id='map'>
-                    Interactive Map
-                </h1>
-                <p>
-                    Have A Look At The Area And View Some Of Our Suggested Places
-                </p>
-                <Row>
-                    <Col>
-                        <InteractiveMap featured={featured} />
-                        {/* <MapContainer
+                </Row> */}
+                    <hr />
+                    <h1 id='map'>
+                        Interactive Map
+                    </h1>
+                    <p>
+                        Have A Look At The Area And View Some Of Our Suggested Places
+                    </p>
+                    <Row>
+                        <Col>
+                            <InteractiveMap featured={myData} />
+                            {/* <MapContainer
                             style={{ height: '100%', width: '100%' }}
                             center={[featured.lat, featured.lng]}
                             zoom={13}
@@ -386,44 +482,44 @@ const Location = () => {
 
 
                         </MapContainer> */}
-                    </Col>
-                </Row>
-                <Row>
-                    <Col>
-                        <AdvertBar adverts={featured.stats} />
-                    </Col>
-                </Row>
-                <hr />
-                <Row>
-                    <Col id='stays'>
-                        <SmallSwiper array={array}>
-                            <h1>Stays</h1>
-                        </SmallSwiper>
-                    </Col>
-                </Row>
-                <hr />
-                <Row>
-                    <Col id='attractions'>
-                        <SmallSwiper array={array}>
-                            <h1>Attractions</h1>
-                        </SmallSwiper>
-                    </Col>
-                </Row>
-                <hr />
-                <Row>
-                    <Col id='dining'>
-                        <SmallSwiper array={array}>
-                            <h1>Dining</h1>
-                        </SmallSwiper>
-                    </Col>
-                </Row>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col>
+                            <AdvertBar adverts={myData.stats} />
+                        </Col>
+                    </Row>
+                    <hr />
+                    <Row>
+                        <Col id='stays'>
+                            <SmallSwiper array={myStays}>
+                                <h1>Stays</h1>
+                            </SmallSwiper>
+                        </Col>
+                    </Row>
+                    <hr />
+                    <Row>
+                        <Col id='attractions'>
+                            <SmallSwiper array={myAttractions}>
+                                <h1>Attractions</h1>
+                            </SmallSwiper>
+                        </Col>
+                    </Row>
+                    <hr />
+                    <Row>
+                        <Col id='dining'>
+                            <SmallSwiper array={myDinings}>
+                                <h1>Dining</h1>
+                            </SmallSwiper>
+                        </Col>
+                    </Row>
 
 
 
 
-            </Container>
+                </Container>
 
-
+            }
 
         </ >
     )

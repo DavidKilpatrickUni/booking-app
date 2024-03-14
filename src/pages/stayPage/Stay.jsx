@@ -28,9 +28,7 @@ import Spinner from 'react-bootstrap/Spinner';
 
 const Stay = () => {
 
-
     const params = useParams()
-
 
     const [myData, setMyData] = useState(null)
     const [myReviews, setMyReviews] = useState(null)
@@ -43,17 +41,29 @@ const Stay = () => {
 
             let docID = ''
 
-            const q = query(collection(db, "stays"), where("listingID", "==", params.id));
+            const docRef = doc(db, "stays", params.id);
+            const docSnap = await getDoc(docRef);
 
-            const querySnapshot = await getDocs(q);
+            if (docSnap.exists()) {
+                console.log("Document data:", docSnap.data());
+                setMyData(docSnap.data())
+                docID = docSnap.id
+            } else {
+                // docSnap.data() will be undefined in this case
+                console.log("No such document!");
+            }
 
-            querySnapshot.forEach((doc) => {
-                // doc.data() is never undefined for query doc snapshots
-                // console.log(doc.id, " => ", doc.data());
-                setMyData(doc.data())
-                console.log(doc.id)
-                docID = doc.id
-            });
+            // const q = query(collection(db, "stays"), where("listingID", "==", params.id));
+
+            // const querySnapshot = await getDocs(q);
+
+            // querySnapshot.forEach((doc) => {
+            //     // doc.data() is never undefined for query doc snapshots
+            //     // console.log(doc.id, " => ", doc.data());
+            //     setMyData(doc.data())
+            //     console.log(doc.id)
+            //     docID = doc.id
+            // });
 
             const subReviews = await getDocs(collection(db, "stays", docID, "reviews"));
 

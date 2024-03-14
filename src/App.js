@@ -23,24 +23,31 @@ function App() {
         <SiteNavbar />
         <Routes>
           <Route path='/' element={<Home />} />
-
           <Route path='/locations' element={<Locations />} />
-          <Route path='/locations/:location' element={<Location />} />
-
           <Route path='/stays' element={<Stays />} />
-
+          <Route path='/attractions' element={<Attractions />} />
+          <Route path='/dinings' element={<Dinings />} />
           <Route path='/search' element={<Search />} />
 
-          <Route path='/:location/stay/:place' element={<Stay />} />
+
+          {/* <Route path='/locations/:location' element={<Location />} />
+          <Route path='/locations/:location/:id' element={<Location />} /> */}
+
+          <Route path='/:location/location/:place/:id' element={<Location />} />
+
+          {<Route path='/:location/stay/:place/:id' element={<Stay />} />}
+
+          <Route path='/:location/attraction/:place/:id' element={<Attraction />} />
+
+          <Route path='/:location/dining/:place/:id' element={<Dining />} />
+
+
+          {/* <Route path='/stay/:name/:id' element={<Stay />} />
+          {<Route path='/:location/stay/:place' element={<Stay />} />}
           <Route path='/:location/stay/:place/:id' element={<Stay />} />
+          <Route path='/:location/dining/:place' element={<Dining />} />  */}
 
-          <Route path='/:location/attraction/:place' element={<Attraction />} />
 
-          <Route path='/:location/dining/:place' element={<Dining />} />
-
-          <Route path='/attractions' element={<Attractions />} />
-
-          <Route path='/dinings' element={<Dinings />} />
 
           <Route path='/createAccount' element={<CreateAccount />} />
 

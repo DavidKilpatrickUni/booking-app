@@ -23,7 +23,7 @@ import MapIconBar from './MapIconBar';
 
 const InteractiveMap = ({ featured }) => {
 
-
+    console.log(featured)
     const hotelIcon = new L.Icon({
         iconUrl: HotelSVG,
         shadowUrl: Shadow,
@@ -83,7 +83,7 @@ const InteractiveMap = ({ featured }) => {
 
                         <MapContainer
                             style={{ height: '100%', width: '100%' }}
-                            center={[featured.lat, featured.lng]}
+                            center={[featured.geoLocation.lat, featured.geoLocation.lng]}
                             zoom={13}
                             scrollWheelZoom={false}
                         >
@@ -93,14 +93,14 @@ const InteractiveMap = ({ featured }) => {
                             />
 
 
-                            <Marker position={[featured.lat, featured.lng]} >
+                            <Marker position={[featured.geoLocation.lat, featured.geoLocation.lng]} >
                                 <Popup>
                                     Location Centre
                                 </Popup>
                             </Marker>
 
-                            {featured.hotelMarkers.map((mark) => (
-                                <Marker position={[mark.lat, mark.lng]} icon={hotelIcon} >
+                            {featured.stayMarkers.map((mark) => (
+                                <Marker position={[mark.geoLocation.lat, mark.geoLocation.lng]} icon={hotelIcon} >
                                     <Popup>
                                         <MapPopup mark={mark} />
                                     </Popup>
@@ -108,7 +108,7 @@ const InteractiveMap = ({ featured }) => {
                             ))}
 
                             {featured.attractionMarkers.map((mark) => (
-                                <Marker position={[mark.lat, mark.lng]} icon={binocularIcon}>
+                                <Marker position={[mark.geoLocation.lat, mark.geoLocation.lng]} icon={binocularIcon}>
                                     <Popup>
                                         <MapPopup mark={mark} />
                                     </Popup>
@@ -116,17 +116,15 @@ const InteractiveMap = ({ featured }) => {
                             ))}
 
                             {featured.restaurantMarkers.map((mark) => (
-                                <Marker position={[mark.lat, mark.lng]} icon={utensilsIcon} >
+                                <Marker position={[mark.geoLocation.lat, mark.geoLocation.lng]} icon={utensilsIcon} >
                                     <Popup>
                                         <MapPopup mark={mark} />
-
-
                                     </Popup>
                                 </Marker>
                             ))}
 
                             {featured.barMarkers.map((mark) => (
-                                <Marker position={[mark.lat, mark.lng]} icon={martiniIcon} >
+                                <Marker position={[mark.geoLocation.lat, mark.geoLocation.lng]} icon={martiniIcon} >
                                     <Popup>
                                         <MapPopup mark={mark} />
                                     </Popup>
@@ -134,7 +132,7 @@ const InteractiveMap = ({ featured }) => {
                             ))}
 
                             {featured.coffeeMarkers.map((mark) => (
-                                <Marker position={[mark.lat, mark.lng]} icon={coffeeIcon} >
+                                <Marker position={[mark.geoLocation.lat, mark.geoLocation.lng]} icon={coffeeIcon} >
                                     <Popup>
                                         <MapPopup mark={mark} />
                                     </Popup>

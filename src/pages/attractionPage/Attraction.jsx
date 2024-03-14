@@ -126,8 +126,10 @@ Couples particularly like the location — they rated it 9.5 for a two-person tr
             }
         ],
         text: `Aberdeen  Scots: Aiberdeen; Scottish Gaelic: Obar Dheathain ; Latin: Aberdonia) is a city in North East Scotland, and is the third most populous Scottish city. Aberdeen is one of Scotland s 32 local government council areas(as Aberdeen City[7]), and has a 2020 population estimate of 198, 590 for the city, [3] making it the United Kingdoms 39th most populous built-up area, and 227,430 for the wider council area including outlying localities.[4] The city is 93 mi (150 km) northeast of Edinburgh and 398 mi (641 km) north of London, and is the northernmost major city in the United Kingdom. Aberdeen has a long, sandy coastline and features an oceanic climate, with cool summers and mild, rainy winters.[8]`,
-        lat: '57.149446',
-        lng: '-2.093752',
+        geoLocation: {
+            lat: '57.149446',
+            lng: '-2.093752'
+        },
         stats: [
             {
                 icon: 'fa-hotel',
@@ -148,15 +150,17 @@ Couples particularly like the location — they rated it 9.5 for a two-person tr
                 message: null
             }
         ],
-        hotelMarkers: [
+        stayMarkers: [
             {
                 location: 'Aberdeen',
                 category: 'stay',
                 placeName: 'Hotel A',
                 address: '9 Bridge St, Aberdeen AB11 6JL',
                 stars: ['fa-star', 'fa-star', 'fa-star'],
-                lat: '57.146478',
-                lng: '-2.095684',
+                geoLocation: {
+                    lat: '57.146478',
+                    lng: '-2.095684',
+                },
                 image: 'https://images.pexels.com/photos/262978/pexels-photo-262978.jpeg',
                 review: {
                     score: 8.7,
@@ -169,8 +173,10 @@ Couples particularly like the location — they rated it 9.5 for a two-person tr
                 placeName: 'Hotel B',
                 address: '9 Bridge St, Aberdeen AB11 6JL',
                 stars: ['fa-star', 'fa-star', 'fa-star'],
-                lat: '57.154636',
-                lng: '-2.085430',
+                geoLocation: {
+                    lat: '57.154636',
+                    lng: '-2.085430',
+                },
                 image: 'https://images.pexels.com/photos/262978/pexels-photo-262978.jpeg',
                 review: {
                     score: 8.7,
@@ -185,8 +191,10 @@ Couples particularly like the location — they rated it 9.5 for a two-person tr
                 placeName: 'Castle',
                 address: '9 Bridge St, Aberdeen AB11 6JL',
                 stars: ['fa-star', 'fa-star', 'fa-star'],
-                lat: '57.150109',
-                lng: '-2.102335',
+                geoLocation: {
+                    lat: '57.150109',
+                    lng: '-2.102335',
+                },
                 image: 'https://images.pexels.com/photos/262978/pexels-photo-262978.jpeg',
                 review: {
                     score: 8.7,
@@ -199,8 +207,10 @@ Couples particularly like the location — they rated it 9.5 for a two-person tr
                 placeName: 'Pool',
                 address: '9 Bridge St, Aberdeen AB11 6JL',
                 stars: ['fa-star', 'fa-star', 'fa-star'],
-                lat: '57.153957',
-                lng: '-2.099069',
+                geoLocation: {
+                    lat: '57.153957',
+                    lng: '-2.099069',
+                },
                 image: 'https://images.pexels.com/photos/262978/pexels-photo-262978.jpeg',
                 review: {
                     score: 8.7,
@@ -215,8 +225,10 @@ Couples particularly like the location — they rated it 9.5 for a two-person tr
                 placeName: 'Kfc',
                 address: '9 Bridge St, Aberdeen AB11 6JL',
                 stars: ['fa-star', 'fa-star', 'fa-star'],
-                lat: '57.150576',
-                lng: '-2.094169',
+                geoLocation: {
+                    lat: '57.150576',
+                    lng: '-2.094169',
+                },
                 image: 'https://images.pexels.com/photos/262978/pexels-photo-262978.jpeg',
                 review: {
                     score: 8.7,
@@ -229,8 +241,10 @@ Couples particularly like the location — they rated it 9.5 for a two-person tr
                 placeName: 'Mcdonalds',
                 address: '9 Bridge St, Aberdeen AB11 6JL',
                 stars: ['fa-star', 'fa-star', 'fa-star'],
-                lat: '57.143907',
-                lng: '-2.093455',
+                geoLocation: {
+                    lat: '57.143907',
+                    lng: '-2.093455',
+                },
                 image: 'https://images.pexels.com/photos/262978/pexels-photo-262978.jpeg',
                 review: {
                     score: 8.7,
@@ -245,8 +259,10 @@ Couples particularly like the location — they rated it 9.5 for a two-person tr
                 placeName: 'Queens Bar',
                 address: '9 Bridge St, Aberdeen AB11 6JL',
                 stars: ['fa-star', 'fa-star', 'fa-star'],
-                lat: '57.150192',
-                lng: '-2.081104',
+                geoLocation: {
+                    lat: '57.150192',
+                    lng: '-2.081104',
+                },
                 image: 'https://images.pexels.com/photos/262978/pexels-photo-262978.jpeg',
                 review: {
                     score: 8.7,
@@ -259,8 +275,10 @@ Couples particularly like the location — they rated it 9.5 for a two-person tr
                 placeName: 'Kings Bar',
                 address: '9 Bridge St, Aberdeen AB11 6JL',
                 stars: ['fa-star', 'fa-star', 'fa-star'],
-                lat: '57.158110',
-                lng: '-2.096698',
+                geoLocation: {
+                    lat: '57.158110',
+                    lng: '-2.096698',
+                },
                 image: 'https://images.pexels.com/photos/262978/pexels-photo-262978.jpeg',
                 review: {
                     score: 8.7,
@@ -275,8 +293,10 @@ Couples particularly like the location — they rated it 9.5 for a two-person tr
                 placeName: 'Bucks',
                 address: '9 Bridge St, Aberdeen AB11 6JL',
                 stars: ['fa-star', 'fa-star', 'fa-star'],
-                lat: '57.145813',
-                lng: '-2.077766',
+                geoLocation: {
+                    lat: '57.145813',
+                    lng: '-2.077766',
+                },
                 image: 'https://images.pexels.com/photos/262978/pexels-photo-262978.jpeg',
                 review: {
                     score: 8.7,
@@ -289,8 +309,10 @@ Couples particularly like the location — they rated it 9.5 for a two-person tr
                 placeName: 'Costa',
                 address: '9 Bridge St, Aberdeen AB11 6JL',
                 stars: ['fa-star', 'fa-star', 'fa-star'],
-                lat: '57.150686',
-                lng: '-2.086262',
+                geoLocation: {
+                    lat: '57.150686',
+                    lng: '-2.086262',
+                },
                 image: 'https://images.pexels.com/photos/262978/pexels-photo-262978.jpeg',
                 review: {
                     score: 8.7,
