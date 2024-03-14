@@ -57,7 +57,32 @@ const ReviewCardFull = ({ review }) => {
 
                         <p className='d-inline d-sm-none'>|</p>
 
-                        <p><FontAwesomeIcon icon='fa-person' className='me-2 d-none d-sm-inline' />{review.group}</p>
+                        {review.group === 'Solo' &&
+                            <p>
+                                <FontAwesomeIcon
+                                    icon='fa-person'
+                                    className='me-2 d-none d-sm-inline' />
+                                {review.group}
+                            </p>
+                        }
+
+                        {review.group === 'Group' &&
+                            <p>
+                                <FontAwesomeIcon
+                                    icon='fa-people-group'
+                                    className='me-2 d-none d-sm-inline' />
+                                {review.group}
+                            </p>
+                        }
+
+                        {review.group === 'Couple' &&
+                            <p>
+                                <FontAwesomeIcon
+                                    icon='fa-children'
+                                    className='me-2 d-none d-sm-inline' />
+                                {review.group}
+                            </p>
+                        }
 
                     </Col>
                     <Col className='col-sm-9 text-center text-sm-start'>

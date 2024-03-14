@@ -5,41 +5,39 @@ import Row from 'react-bootstrap/Row'
 import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom';
 
-const LongCard = ({ features }) => {
+const LongCard = ({ listing }) => {
     return (
         <>
             <Container>
 
                 <Row className='d-flex flex-column flex-md-row'>
 
-                    {features.map((feature) => (
+                    {listing.map((list) => (
                         <Col className='col-md-12 my-1'>
                             <Card>
                                 <Card.Body>
-                                    <Card.Text>
-                                        <Row>
-                                            <Col className='col-5 col-lg-3 rounded-4' style={{ background: `url(${feature.images[0].image}) center center no-repeat`, backgroundSize: 'cover' }}>
 
-                                            </Col>
-                                            <Col className='col-6 col-lg-8'>
-                                                <small>{feature.type}</small>
+                                    <Row>
+                                        <Col className='col-5 col-lg-3 rounded-4' style={{ background: `url(${list.data.image}) center center no-repeat`, backgroundSize: 'cover' }}>
 
-                                                <p>
-                                                    <Link to={`/${feature.location}/${feature.category}/${feature.name}`}>
-                                                        {feature.name}
-                                                    </Link>
-                                                </p>
+                                        </Col>
+                                        <Col className='col-6 col-lg-8'>
+                                            <small>{list.data.type}</small>
+
+                                            <p>
+                                                <Link to={`/${list.data.location}/${list.data.category}/${list.data.name}/${list.id}`}>
+                                                    {list.data.name}
+                                                </Link>
+                                            </p>
 
 
 
-                                                <p>{feature.text}</p>
-                                            </Col>
-                                            <Col className='col-1'>
-                                                <p className='badge bg-primary'>{feature.reviewScore}</p>
-                                            </Col>
-                                        </Row>
-                                    </Card.Text>
-
+                                            <p>{list.data.text}</p>
+                                        </Col>
+                                        <Col className='col-1'>
+                                            <p className='badge bg-primary'>{list.data.reviewScore}</p>
+                                        </Col>
+                                    </Row>
                                 </Card.Body>
                             </Card>
 

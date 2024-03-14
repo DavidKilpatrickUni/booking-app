@@ -14,7 +14,7 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 
 library.add(fas)
 
-const Questions = ({ children }) => {
+const Questions = ({ children, questions }) => {
 
 
     const [show, setShow] = useState(false);
@@ -24,94 +24,19 @@ const Questions = ({ children }) => {
 
     const place = 'The Polwarth Apartment'
 
-    const questions = [
-        {
-            question: 'Does the hotel have restaurants?',
-            answer: `The Tower Hotel, London has 3 restaurants:
 
-Vicinity
-The Lawn
-Xi Bar and Lounge`,
-            answerTime: '20 May 2019'
-        },
-        {
-            question: 'Any breakfast?',
-            answer: `Guests staying at The Tower Hotel, London can enjoy a highly-rated breakfast during their stay (guest review score: 7.4).
-
-Breakfast option(s) include:
-
-Full English/Irish
-Vegetarian
-Gluten-free
-Buffet`,
-            answerTime: '20 May 2019'
-        },
-        {
-            question: 'Type of rooms available?',
-            answer: `Room options at The Tower Hotel, London include:
-
-Double
-Twin
-Suite
-Family`,
-            answerTime: '20 May 2019'
-        },
-        {
-            question: 'What s the cost?',
-            answer: `The prices at The Tower Hotel, London may vary depending on your stay (e.g. dates you select, hotel's policy etc.). See the prices by entering your dates.`,
-            answerTime: '20 May 2019'
-        },
-        {
-            question: 'Check-in and check-out times?',
-            answer: `Check-in at The Tower Hotel, London is from 15:00, and check-out is until 11:00.`,
-            answerTime: '20 May 2019'
-        },
-        {
-            question: 'What is there to do?',
-            answer: `The Tower Hotel, London offers the following activities / services (charges may apply):
-
-Fitness centre`,
-            answerTime: '20 May 2019'
-        },
-        {
-            question: 'Type of rooms available?',
-            answer: `Room options at The Tower Hotel, London include:
-
-Double
-Twin
-Suite
-Family`,
-            answerTime: '20 May 2019'
-        },
-        {
-            question: 'What s the cost?',
-            answer: `The prices at The Tower Hotel, London may vary depending on your stay (e.g. dates you select, hotel's policy etc.). See the prices by entering your dates.`,
-            answerTime: '20 May 2019'
-        },
-        {
-            question: 'Check-in and check-out times?',
-            answer: `Check-in at The Tower Hotel, London is from 15:00, and check-out is until 11:00`,
-            answerTime: '20 May 2019'
-        },
-        {
-            question: 'What is there to do?',
-            answer: `The Tower Hotel, London offers the following activities / services (charges may apply):
-
-Fitness centre`,
-            answerTime: '20 May 2019'
-        }
-
-
-    ]
 
 
 
     return (
         <section className='text-center text-md-start'>
+
+
             <Container>
                 <Row>
                     {children}
-                    <Col className='col-md-9 col-12'>
+                    <Col className='col-md-9 d-flex col-12 align-items-center'>
+
                         <Accordion defaultActiveKey="0">
 
                             {questions.filter((question, index) => index < 5).map((question, index) => (
@@ -125,6 +50,7 @@ Fitness centre`,
                                 </Accordion.Item>
                             ))}
                         </Accordion>
+
                     </Col>
                     <Col className='col-md-3 col-12 h-100 align-self-center text-center mt-2 mt-md-0'>
                         <p className='d-none d-md-block fw-bold'>Still Looking?</p>
@@ -191,7 +117,6 @@ Fitness centre`,
                                     </Col>
                                 </Row>
                             </Container>
-
 
 
 

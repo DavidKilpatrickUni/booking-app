@@ -18,7 +18,7 @@ import ReactCountryFlag from "react-country-flag";
 
 const ReviewCard = ({ review }) => {
 
-    console.log(review)
+    // console.log(review)
 
     const [show, setShow] = useState(false);
     const [slide, setSlide] = useState(null);
@@ -137,7 +137,8 @@ const ReviewCard = ({ review }) => {
                     </Row>
                 </Container> */}
                 <Modal.Footer>
-                    <small className='me-auto fst-italic'>Posted: {review.posted}</small>
+
+                    <small className='me-auto fst-italic'>Posted: {review.posted.seconds}</small>
                     <Button className='btn-primary' onClick={handleClose}>
                         Close
                     </Button>

@@ -11,31 +11,9 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 
 library.add(fas)
 
-const Facilities = () => {
+const Facilities = ({ facilities }) => {
 
-    const facilities = [
-        {
-            category: 'Bathroom',
-            icon: 'fa-bath',
-            items: ['Towels', 'Bath', 'Shower', 'Hairdryer', 'Toiletries']
-        },
-        {
-            category: 'Bedroom',
-            icon: 'fa-bed',
-            items: ['Double Bed', 'Linen', 'Wardrobe', 'Extra Pillows']
-        },
-        {
-            category: 'General',
-            icon: 'fa-circle-info',
-            items: ['Designated smoking area', 'Wake-up service', 'Ironing facilities']
-        },
-        {
-            category: 'Accessability',
-            icon: 'fa-wheelchair',
-            items: ['Lower bathroom sink', 'Toilet with grab rails', 'Wheelchair accessible', 'Upper floors accessible by elevator']
-        }
 
-    ]
 
 
     return (

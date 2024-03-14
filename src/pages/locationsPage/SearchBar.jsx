@@ -29,7 +29,6 @@ const SearchBar = ({ locations }) => {
                             Submit
                         </Button>
                     </Col>
-
                 </Row>
             </Container>
         </form>

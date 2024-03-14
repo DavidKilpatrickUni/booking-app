@@ -32,6 +32,7 @@ function App() {
           <Route path='/search' element={<Search />} />
 
           <Route path='/:location/stay/:place' element={<Stay />} />
+          <Route path='/:location/stay/:place/:id' element={<Stay />} />
 
           <Route path='/:location/attraction/:place' element={<Attraction />} />
 

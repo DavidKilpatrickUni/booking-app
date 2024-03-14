@@ -15,7 +15,7 @@ const HouseRules = ({ data }) => {
             <Container>
                 <h1 className='text-center text-md-start'>House Rules</h1>
                 <hr />
-                {data.houserules.map((rule) => (
+                {data.map((rule) => (
                     <Row className='border pt-2'>
 
                         <Col className='fs-6 col-5'>

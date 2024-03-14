@@ -9,8 +9,8 @@ const FinePrint = ({ children, fine }) => {
             <Container>
                 <Row>
                     {children}
-                    <Col className='border css-fix text-start'>
-                        {fine}
+                    <Col className='border css-fix text-start' dangerouslySetInnerHTML={{ __html: fine }}>
+                        {/* {fine} */}
                     </Col>
                 </Row>
             </Container>

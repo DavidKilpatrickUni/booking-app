@@ -1,10 +1,10 @@
 import React from 'react'
 import LongCard from '../../components/LongCard'
 
-const SearchCardHolder = ({ features }) => {
+const SearchCardHolder = ({ listing }) => {
     return (
         <div>
-            <LongCard features={features} />
+            <LongCard listing={listing} />
         </div>
     )
 }
