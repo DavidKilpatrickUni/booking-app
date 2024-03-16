@@ -5,22 +5,22 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 
-const TabList = ({tabInfo, tab}) => {
+const TabList = ({ tabInfo, tab }) => {
 
   return (
 
     <>
-        <Container>
-            <Row>
+      <Container>
+        <Row>
 
-            {tabInfo.places.filter(place => place.category == tab.name || tab.name == 'All').map((info) => (
-                <Col className='col-md-6 col-12 my-1'>
-                    <TabCard info={info}/>
-                </Col>
-            ))}
-            
-            </Row>
-        </Container>
+          {tabInfo.filter(place => place.type == tab.name || tab.name == 'All').map((info) => (
+            <Col className='col-md-6 col-12 my-1'>
+              <TabCard info={info} />
+            </Col>
+          ))}
+
+        </Row>
+      </Container>
 
     </>
   )

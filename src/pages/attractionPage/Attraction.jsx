@@ -1,7 +1,11 @@
 import React from 'react'
+import { useState, useEffect } from 'react'
+import { useParams } from 'react-router-dom'
+
 import Col from 'react-bootstrap/Col'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
+import Nav from 'react-bootstrap/Nav';
 
 import Title from '../../components/Title'
 
@@ -11,9 +15,96 @@ import PlaceSwiper from '../../components/PlaceSwiper'
 import PlaceImageBlock2 from '../../components/PlaceImageBlock2'
 import ReviewCardHolder from '../../components/ReviewCardHolder'
 import ReviewScore from '../../components/ReviewScore'
+import Questions from '../../components/Questions';
+import FinePrint from '../../components/FinePrint';
+import PlaceHighlightsBlock from '../../components/PlaceHighlightsBlock'
+import Facilities from '../../components/Facilities';
+import Surroundings from '../../components/Surroundings';
 
+import { doc, getDoc, updateDoc, collection, getDocs, query, where, orderBy, deleteDoc } from 'firebase/firestore'
+import { db } from '../../firebase.config'
+
+
+import Spinner from 'react-bootstrap/Spinner';
 
 const Attraction = () => {
+
+    const params = useParams()
+
+    const [myData, setMyData] = useState(null)
+    const [myReviews, setMyReviews] = useState(null)
+    const [myQuestions, setMyQuestions] = useState(null)
+    const [loading, setLoading] = useState(true)
+
+    useEffect(() => {
+
+        const fetchData = async () => {
+
+            let docID = ''
+
+            const docRef = doc(db, "attractions", params.id);
+            const docSnap = await getDoc(docRef);
+
+            if (docSnap.exists()) {
+                // console.log("Document data:", docSnap.data());
+                setMyData(docSnap.data())
+                docID = docSnap.id
+            } else {
+                // docSnap.data() will be undefined in this case
+                console.log("No such document!");
+            }
+
+            // const q = query(collection(db, "stays"), where("listingID", "==", params.id));
+
+            // const querySnapshot = await getDocs(q);
+
+            // querySnapshot.forEach((doc) => {
+            //     // doc.data() is never undefined for query doc snapshots
+            //     // console.log(doc.id, " => ", doc.data());
+            //     setMyData(doc.data())
+            //     console.log(doc.id)
+            //     docID = doc.id
+            // });
+
+            const subReviews = await getDocs(collection(db, "attractions", docID, "reviews"));
+
+            let responseReviews = []
+
+            subReviews.forEach((doc) => {
+                // doc.data() is never undefined for query doc snapshots
+                // console.log(doc.id, " => ", doc.data());
+                return responseReviews.push(
+                    doc.data()
+                )
+            });
+
+            const subQuestions = await getDocs(collection(db, "attractions", docID, "questions"));
+
+            let responseQuestions = []
+
+            subQuestions.forEach((doc) => {
+                // doc.data() is never undefined for query doc snapshots
+                // console.log(doc.id, " => ", doc.data());
+                return responseQuestions.push(
+                    doc.data()
+                )
+            });
+
+            setMyReviews(responseReviews)
+            setMyQuestions(responseQuestions)
+            setLoading(false)
+
+        }
+
+        fetchData()
+
+    }, [])
+
+
+    //console.log(myData)
+    console.log(myReviews)
+    //console.log(myQuestions)
+
 
     const data =
     {
@@ -328,7 +419,7 @@ Couples particularly like the location — they rated it 9.5 for a two-person tr
             country: 'Spain',
             countryCode: 'ES',
             profilePic: "https://randomuser.me/api/portraits/men/70.jpg",
-            group: 'solo',
+            group: 'Solo',
             duration: '3 days',
             date: '03 May',
             score: '8.7',
@@ -344,7 +435,7 @@ Couples particularly like the location — they rated it 9.5 for a two-person tr
             country: 'Switzerland',
             countryCode: 'CH',
             profilePic: "https://randomuser.me/api/portraits/men/71.jpg",
-            group: 'family',
+            group: 'Group',
             duration: '3 days',
             date: '03 May',
             score: '8.7',
@@ -360,7 +451,7 @@ Couples particularly like the location — they rated it 9.5 for a two-person tr
             country: 'USA',
             countryCode: 'US',
             profilePic: "https://randomuser.me/api/portraits/men/72.jpg",
-            group: 'couple',
+            group: 'Couple',
             duration: '3 days',
             date: '03 May',
             score: '8.7',
@@ -376,7 +467,7 @@ Couples particularly like the location — they rated it 9.5 for a two-person tr
             country: 'sweden',
             countryCode: 'SE',
             profilePic: "https://randomuser.me/api/portraits/men/73.jpg",
-            group: 'friends',
+            group: 'Group',
             duration: '3 days',
             date: '03 May',
             score: '8.7',
@@ -392,7 +483,7 @@ Couples particularly like the location — they rated it 9.5 for a two-person tr
             country: 'Zimbabwe',
             countryCode: 'ZW',
             profilePic: "https://randomuser.me/api/portraits/men/74.jpg",
-            group: 'friends',
+            group: 'Group',
             duration: '3 days',
             date: '03 May',
             score: '8.7',
@@ -407,57 +498,135 @@ Couples particularly like the location — they rated it 9.5 for a two-person tr
 
     return (
         <>
-            <Container>
+            {!loading && <Container>
                 <Row>
                     <Col >
                         <Title >
                             <h1>
-                                Some Attraction
+                                {myData.name}
                             </h1>
                             <p>
-                                Great place to visit
+                                {myData.summary}
                             </p>
                         </Title>
                     </Col>
                 </Row>
                 <Row>
+                    <Col>
+                        <Nav justify defaultActiveKey="/home">
+                            <Nav.Item>
+                                <Nav.Link href="#overview">Overview</Nav.Link>
+                            </Nav.Item>
+                            <Nav.Item>
+                                <Nav.Link
+                                    href="#reviews" eventKey="link-1">Reviews</Nav.Link>
+                            </Nav.Item>
+                            <Nav.Item>
+                                <Nav.Link
+                                    href="#questions" eventKey="link-2">Questions</Nav.Link>
+                            </Nav.Item>
+                            <Nav.Item>
+                                <Nav.Link
+                                    href="#facilities" eventKey="link-3">Facilities</Nav.Link>
+                            </Nav.Item>
+                            <Nav.Item>
+                                <Nav.Link
+                                    href="#map" eventKey="link-4">Map</Nav.Link>
+                            </Nav.Item>
+                            <Nav.Item>
+                                <Nav.Link
+                                    href="#finePrint" eventKey="link-5">Fine Print</Nav.Link>
+                            </Nav.Item>
+                        </Nav>
+                    </Col>
+                </Row>
+                <hr />
+                <Row>
                     <Col className='d-block d-lg-none'>
-                        <PlaceSwiper data={data} />
+                        <PlaceSwiper data={myData} />
 
                     </Col>
                     <Col className='d-none d-lg-block'>
 
-                        <PlaceImageBlock2 data={data} />
+                        <PlaceImageBlock2 data={myData} />
                     </Col>
                 </Row>
                 <hr />
                 <Row>
                     <Col>
-                        <InteractiveMap featured={featured} />
+                        <PlaceHighlightsBlock data={myData}></PlaceHighlightsBlock>
+                    </Col>
+                </Row>
+
+                <Row>
+                    <Col>
+                        <p>{myData.text}</p>
                     </Col>
                 </Row>
                 <hr />
                 <Row>
-                    <Col>
-                        <ReviewScore data={data}>
+                    <Col id='reviews'>
+                        <ReviewScore data={myData}>
                             <h1>Reviews</h1>
                         </ReviewScore>
                     </Col>
                 </Row>
                 <Row>
                     <Col>
-                        <ReviewBars data={data}>
+                        <ReviewBars data={myData}>
                         </ReviewBars>
                     </Col>
                 </Row>
                 <hr />
                 <Row>
+                    <Col >
+                        <ReviewCardHolder data={myData} reviews={myReviews} />
+                    </Col>
+                </Row>
+                <hr />
+                <Row>
+                    <Col id='questions'>
+                        <Questions questions={myQuestions}>
+                            <h1>Questions</h1>
+                            <p>Frequent Asked</p>
+                        </Questions>
+                    </Col>
+                </Row>
+                <hr />
+                <Row>
+                    <Col id='facilities'>
+                        <Facilities facilities={myData.facilities} />
+                    </Col>
+                </Row>
+                <hr />
+                <Row>
                     <Col>
-                        <ReviewCardHolder reviews={reviews} data={data} />
+                        <h1 id='map'>
+                            Interactive Map
+                        </h1>
+                        <p>
+                            Have A Look At The Area And View Some Of Our Suggested Places
+                        </p>
+                        <InteractiveMap featured={myData.map} />
+                    </Col>
+                </Row>
+                <hr />
+                <Row>
+                    <Col id='finePrint'>
+                        <FinePrint fine={myData.fine}>
+                            <h1 >
+                                Fine Print
+                            </h1>
+                            <p>
+                                Need-to-know information for guests visiting this attraction
+                            </p>
+                        </FinePrint>
                     </Col>
                 </Row>
 
-            </Container>
+
+
+            </Container>}
         </>
     )
 }

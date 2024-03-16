@@ -37,7 +37,8 @@ const Questions = ({ children, questions }) => {
                     {children}
                     <Col className='col-md-9 d-flex col-12 align-items-center'>
 
-                        <Accordion defaultActiveKey="0">
+                        <Accordion defaultActiveKey="0"
+                            className='w-100'>
 
                             {questions.filter((question, index) => index < 5).map((question, index) => (
                                 <Accordion.Item eventKey={index}>

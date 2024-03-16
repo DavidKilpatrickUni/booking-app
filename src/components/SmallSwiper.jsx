@@ -57,7 +57,13 @@ const SmallSwiper = ({ children, array, reviews }) => {
                             <Card.Img variant="top" src={location.image} />
                             <Card.Footer>
                                 <p className='m-0 fw-bold fs-6'>{location.name}</p>
-                                <small>{location.places} Places</small>
+                                {location.places ? <small>{location.places} Places</small>
+                                    :
+                                    <>
+                                        <small className='d-block'>{location.type}</small>
+                                        <small>{location.location}</small>
+                                    </>
+                                }
                             </Card.Footer>
                         </Card>
 

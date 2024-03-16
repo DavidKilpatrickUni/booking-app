@@ -69,7 +69,7 @@ const Locations = () => {
 
     }, [])
 
-    //console.log(myFeatured)
+    console.log(myFeatured)
     //console.log(myLocations)
 
     useEffect(() => {

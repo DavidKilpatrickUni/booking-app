@@ -19,35 +19,18 @@ const Featured = ({ children, featured, myFeatured }) => {
     return (
         <section className='text-center text-md-start'>
             {children}
-            {/* <Container>
-                <Row >
-                    <Col className='d-flex justify-content-center'>
-                        <Carousel style={{ maxHeight: '1200px', maxWidth: '800px' }}>
-                            {featured.images.map(({ image, imageInfo }) => (
-                                <Carousel.Item style={{ maxHeight: '1200px', maxWidth: '800px' }}
-                                    onClick={() => navigate(`/locations/${featured.location}`)}>
-                                    <img src={image} alt='' text="Third slide" className='img-fluid' />
-                                    <Carousel.Caption>
-                                        <h1>{featured.location}</h1>
-                                        <p>{imageInfo}</p>
-                                    </Carousel.Caption>
-                                </Carousel.Item>
-                            ))}
-                        </Carousel>
-                    </Col>
-                </Row>
-            </Container> */}
             <Container>
                 <Row >
                     <Col className='d-flex justify-content-center'>
                         <Carousel style={{ maxHeight: '1200px', maxWidth: '800px' }}>
-                            {myFeatured.images.map(({ image, imageInfo }) => (
-                                <Carousel.Item style={{ maxHeight: '1200px', maxWidth: '800px' }}
+                            {myFeatured.images.map((item) => (
+                                <Carousel.Item
+                                    style={{ maxHeight: '1200px', maxWidth: '800px' }}
                                     onClick={() => navigate(`/${myFeatured.location}/${myFeatured.category}/${myFeatured.name}/${myFeatured.refID}`)}>
-                                    <img src={image} alt='' text="Third slide" className='img-fluid' />
+                                    <img src={item.image} alt='' text="Third slide" className='img-fluid rounded-4' />
                                     <Carousel.Caption>
-                                        <h1>{myFeatured.location}</h1>
-                                        <p>{imageInfo}</p>
+                                        <h1>{featured.location}</h1>
+                                        <p>{item.info}</p>
                                     </Carousel.Caption>
                                 </Carousel.Item>
                             ))}

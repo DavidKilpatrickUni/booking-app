@@ -94,6 +94,9 @@ const ReviewCardHolder = ({ reviews, data }) => {
                         <h3>Guest Reviews</h3>
                     </ReviewCardList>
                 </Offcanvas.Body>
+                <div className='sticky-bottom border w-100 p-3 bg-white'>
+                    <Button className='w-100' size='lg'>Post A Review</Button>
+                </div>
             </Offcanvas>
 
         </section>

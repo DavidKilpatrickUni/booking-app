@@ -41,6 +41,7 @@ const Location = () => {
     const [myDinings, setMyDinings] = useState(null)
     const [loading, setLoading] = useState(true)
 
+    console.log(params)
 
 
     useEffect(() => {
@@ -118,8 +119,8 @@ const Location = () => {
 
 
 
-    console.log(myData)
-    // console.log(myStays)
+    // console.log(myData)
+    console.log(myStays)
     //console.log(myAttractions)
 
     const array4 = [

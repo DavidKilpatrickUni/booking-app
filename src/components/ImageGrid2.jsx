@@ -18,9 +18,11 @@ const ImageGrid2 = ({ children, array3 }) => {
                 <Row className='d-flex flex-column flex-md-row'>
                     {array3.map((location) => (
                         <Col className='col-md-6 my-1 '>
-                            <div className='rounded-3 position-relative' style={{ background: `url(${location.image})center center no-repeat`, backgroundSize: 'Cover', height: '200px' }}>
+                            <div className='rounded-3 position-relative' style={{ background: `url(${location.image})center center no-repeat`, backgroundSize: 'Cover', height: '200px' }}
+                                onClick={() => navigate(`/${location.location}/${location.category}/${location.name}/${location.refID}`)}
+                            >
                                 <p class="position-absolute top-50 text-white fw-bolder ms-2 mt-5">{location.name}</p>
-                                <small class=" position-absolute bottom-0 start-0 text-white ms-2 mb-2">{location.attraction}</small>
+                                <small class=" position-absolute bottom-0 start-0 text-white ms-2 mb-2">{location.type}</small>
                             </div>
                         </Col>
                     ))}

@@ -21,7 +21,7 @@ const MapPopup = ({ mark }) => {
                     </Col>
                     <Col className='col-7 my-0'>
                         <Link to={`/${mark.location}/${mark.category}/${mark.name}`}>
-                            <h6 className='fw-bold'>{mark.placeName}</h6>
+                            <h6 className='fw-bold'>{mark.name}</h6>
                         </Link>
 
                         <p className='my-1'>{mark.address}</p>

@@ -26,7 +26,7 @@ const Facilities = ({ facilities }) => {
                     {facilities.map((facility) => (
                         <>
                             <Col className='col-md-4 col-6 mb-1'>
-                                <h5 className='mb-2'><FontAwesomeIcon icon={facility.icon} className='me-2' />{facility.category}</h5>
+                                <h5 className='mb-2'><FontAwesomeIcon icon={facility.icon} className='me-2 text-primary' />{facility.category}</h5>
                                 {facility.items.map((item) => (
                                     <p>            <FontAwesomeIcon icon='fa-check' className='me-2 text-success' />{item}</p>
                                 ))}
