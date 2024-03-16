@@ -610,6 +610,11 @@ Couples particularly like the location — they rated it 9.5 for a two-person tr
                         <InteractiveMap featured={myData.map} />
                     </Col>
                 </Row>
+                <Row>
+                    <Col>
+                        <Surroundings surroundings={myData.surroundings} />
+                    </Col>
+                </Row>
                 <hr />
                 <Row>
                     <Col id='finePrint'>

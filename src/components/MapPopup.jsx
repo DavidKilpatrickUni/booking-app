@@ -20,7 +20,7 @@ const MapPopup = ({ mark }) => {
                         <img src={mark.image} alt='' className='img-fluid rounded-3' />
                     </Col>
                     <Col className='col-7 my-0'>
-                        <Link to={`/${mark.location}/${mark.category}/${mark.name}`}>
+                        <Link to={`/${mark.location}/${mark.category}/${mark.name}/${mark.refID}`}>
                             <h6 className='fw-bold'>{mark.name}</h6>
                         </Link>
 

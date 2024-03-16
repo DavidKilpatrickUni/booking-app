@@ -49,7 +49,7 @@ const PlaceImageBlock2 = ({ children, data }) => {
                         <Col className='col-7 p-0 '      >
                             <div className='my-1 me-1 rounded-start'
                                 onClick={() => handleShow(0)}
-                                style={{ background: `url(${data.images[0]}) center center no-repeat`, backgroundSize: 'cover', width: 'auto', height: '411px', cursor: 'pointer' }}>
+                                style={{ background: `url(${data.images[0]}) center center no-repeat`, backgroundSize: 'cover', width: 'auto', height: '412px', cursor: 'pointer' }}>
                             </div>
                         </Col>
                         <Col className='col-3 p-0 '

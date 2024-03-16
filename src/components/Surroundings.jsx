@@ -24,7 +24,7 @@ const Surroundings = ({ surroundings }) => {
                     {surroundings.map((surround) => (
                         <>
                             <Col className='col-md-4 col-6 mb-1'>
-                                <h5 className='mb-2'><FontAwesomeIcon icon={surround.icon} className='me-2' />{surround.category}</h5>
+                                <h5 className='mb-2'><FontAwesomeIcon icon={surround.icon} className='me-2 text-primary' />{surround.category}</h5>
                                 {surround.places.map((place) => (
                                     <Row className='d-flex justify-content-between'>
                                         <Col className='col-9'>

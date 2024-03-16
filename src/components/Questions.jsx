@@ -91,7 +91,7 @@ const Questions = ({ children, questions }) => {
                                 <Row>
                                     <Col className='col-sm-5 col-12 mb-2'>
                                         <p className='text-secondary fst-italic m-0'>
-                                            {question.answerTime}
+                                            Replied: {question.answerTime}
                                         </p>
                                     </Col>
                                     <Col className='col-sm-7 col-12'>

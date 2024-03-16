@@ -100,6 +100,11 @@ const ReviewCardFull = ({ review }) => {
                         </p>
                     </Col>
                 </Row>
+                <Row>
+                    <Col className='text-end'>
+                        <small className='me-auto fst-italic'>Posted: {review.posted}</small>
+                    </Col>
+                </Row>
             </Container>
         </div>
     )

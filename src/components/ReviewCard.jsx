@@ -138,7 +138,6 @@ const ReviewCard = ({ review }) => {
                 </Container> */}
                 <Modal.Footer>
 
-                    <small className='me-auto fst-italic'>Posted: {review.posted.seconds}</small>
                     <Button className='btn-primary' onClick={handleClose}>
                         Close
                     </Button>
