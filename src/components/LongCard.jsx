@@ -18,24 +18,32 @@ const LongCard = ({ listing }) => {
                                 <Card.Body>
 
                                     <Row>
-                                        <Col className='col-5 col-lg-3 rounded-4' style={{ background: `url(${list.data.image}) center center no-repeat`, backgroundSize: 'cover' }}>
+                                        <Col className='col-5 col-lg-3 rounded-4 myImg'
+                                            style={{
+                                                // background: `url(${list.image}) center center no-repeat`,
+
+                                                backgroundSize: 'cover',
+                                                backgroundImage: `url(${list.image})`,
+                                                backgroundPosition: 'center',
+                                                backgroundRepeat: 'no'
+                                            }}>
 
                                         </Col>
                                         <Col className='col-6 col-lg-8'>
-                                            <small>{list.data.type}</small>
+                                            <small>{list.type}</small>
 
                                             <p>
-                                                <Link to={`/${list.data.location}/${list.data.category}/${list.data.name}/${list.id}`}>
-                                                    {list.data.name}
+                                                <Link to={`/${list.location}/${list.category}/${list.name}/${list.refID}`}>
+                                                    {list.name}
                                                 </Link>
                                             </p>
 
 
-
-                                            <p>{list.data.text}</p>
+                                            <p>{list.location}</p>
+                                            <p>{list.text}</p>
                                         </Col>
                                         <Col className='col-1'>
-                                            <p className='badge bg-primary'>{list.data.reviewScore}</p>
+                                            <p className='badge bg-primary'>{list.reviewScore}</p>
                                         </Col>
                                     </Row>
                                 </Card.Body>

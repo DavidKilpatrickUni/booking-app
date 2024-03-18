@@ -1,4 +1,5 @@
-img {
+img,
+.myImg {
     aspect-ratio: 3/2;
     cursor: pointer;
 }
@@ -21,4 +22,3 @@ img {
         max-Height: 400px !important
     }
 }
-
