@@ -22,63 +22,51 @@ const SearchCriteriaHolder = () => {
     const removeSearch = removeq.filter((item) => item !== 'search')
     //console.log(removeSearch)
 
-    const [query, setQuery] = useState(`?`)
 
-    // const handleChange = (e) => {
-    //     let url = ''
-
-    //     //console.log(e)
-    //     // console.log(e.target.name)
-    //     // console.log(e.target.value)
-
-    //     if (e.target.checked) {
-    //         //console.log(removeSearch.length)
-    //         removeSearch.push(e.target.value)
-    //         removeSearch.forEach((item) => {
-    //             url += item
-    //         })
-    //         //e.target.disabled = true
-    //         const joinString = removeSearch.join('/')
-    //         //console.log(joinString)
-
-    //         navigate(`${location.pathname}?${url}`)
-
-
-    //     }
-    //     else {
-    //         const array = removeSearch.filter((item) => (item !== e.target.value))
-
-
-    //         //console.log(array)
-    //         //console.log(array.length)
-
-    //         array.forEach((item) => {
-    //             url += item
-    //         })
-
-
-    //         const joinString = array.join('/')
-    //         //console.log(joinString)
-
-    //         navigate(`${location.pathname}?${url}`)
-
-
-    //     }
-    // }
 
     const handleChange = (e) => {
-        setQuery((prev) => prev + `${e.target.name}=${e.target.value}`)
+        let url = ''
+
+        //console.log(e)
+        // console.log(e.target.name)
+        // console.log(e.target.value)
+
+        if (e.target.checked) {
+            //console.log(removeSearch.length)
+            removeSearch.push(e.target.value)
+            removeSearch.forEach((item) => {
+                url += '/' + item
+            })
+            //e.target.disabled = true
+            const joinString = removeSearch.join('/')
+            //console.log(joinString)
+
+            navigate(`q${url}`)
+
+
+        }
+        else {
+            const array = removeSearch.filter((item) => (item !== e.target.value))
+
+
+            //console.log(array)
+            //console.log(array.length)
+
+            array.forEach((item) => {
+                url += '/' + item
+            })
+
+
+            const joinString = array.join('/')
+            //console.log(joinString)
+
+            navigate(`q${url}`)
+
+
+        }
     }
 
-    const handleChange2 = (e) => {
 
-        setQuery((prev) => prev + `${e.target.name}=${e.target.value}`)
-
-    }
-
-    useEffect(() => {
-        navigate(query)
-    }, [query])
 
 
     return (
@@ -113,17 +101,28 @@ const SearchCriteriaHolder = () => {
                                             Edinburgh
                                         </label>
                                     </div>
+                                    <div className="form-check">
+                                        <input className="form-check-input" type="checkbox" value="Glasgow"
+                                            name='location'
+                                            id="flexCheckChecked2"
+                                            onClick={handleChange}
+                                        >
+                                        </input>
+                                        <label className="form-check-label" for="flexCheckChecked2">
+                                            Glasgow
+                                        </label>
+                                    </div>
                                 </Accordion.Body>
                             </Accordion.Item>
                             <Accordion.Item eventKey="1">
                                 <Accordion.Header>Our Pick</Accordion.Header>
                                 <Accordion.Body>
                                     <div className="form-check">
-                                        <input className="form-check-input" type="checkbox" value='true' name='ourPick' id="flexCheckDefault"
+                                        <input className="form-check-input" type="checkbox" value='ourPick' name='ourPick' id="flexCheckDefault3"
 
-                                            onClick={handleChange2}
+                                            onClick={handleChange}
                                         ></input>
-                                        <label className="form-check-label" for="flexCheckDefault"
+                                        <label className="form-check-label" for="flexCheckDefault3"
                                         >
                                             Yes
                                         </label>
@@ -134,34 +133,145 @@ const SearchCriteriaHolder = () => {
                                 <Accordion.Header>Type</Accordion.Header>
                                 <Accordion.Body>
                                     <div className="form-check">
-                                        <input className="form-check-input" type="checkbox" value="Apartment" id="flexCheckDefault"
+                                        <input className="form-check-input" type="checkbox" value="Apartment" id="flexCheckDefault4"
                                             onClick={handleChange}
                                         ></input>
-                                        <label className="form-check-label" for="flexCheckDefault"
+                                        <label className="form-check-label" for="flexCheckDefault4"
                                         >
                                             Apartment
                                         </label>
                                     </div>
                                     <div className="form-check">
                                         <input className="form-check-input" type="checkbox" value="Studio"
-                                            id="flexCheckChecked"
+                                            id="flexCheckChecked5"
                                             onClick={handleChange}
                                         >
                                         </input>
-                                        <label className="form-check-label" for="flexCheckChecked">
+                                        <label className="form-check-label" for="flexCheckChecked5">
                                             Studio
+                                        </label>
+                                    </div>
+                                    <div className="form-check">
+                                        <input className="form-check-input" type="checkbox" value="Hotel"
+                                            id="flexCheckChecked6"
+                                            onClick={handleChange}
+                                        >
+                                        </input>
+                                        <label className="form-check-label" for="flexCheckChecked6">
+                                            Hotel
                                         </label>
                                     </div>
                                 </Accordion.Body>
                             </Accordion.Item>
                             <Accordion.Item eventKey="3">
-                                <Accordion.Header>Rating</Accordion.Header>
+                                <Accordion.Header>Stars</Accordion.Header>
                                 <Accordion.Body>
+                                    <div className="form-check">
+                                        <input className="form-check-input" type="checkbox" value='1Star' name='review' id="flexCheckDefault8"
+
+                                            onClick={handleChange}
+                                        ></input>
+                                        <label className="form-check-label" for="flexCheckDefault8"
+                                        >
+                                            1 Star
+                                        </label>
+                                    </div>
+                                    <div className="form-check">
+                                        <input className="form-check-input" type="checkbox" value='2Star' name='review' id="flexCheckDefault9"
+
+                                            onClick={handleChange}
+                                        ></input>
+                                        <label className="form-check-label" for="flexCheckDefault9"
+                                        >
+                                            2 Star
+                                        </label>
+                                    </div>
+                                    <div className="form-check">
+                                        <input className="form-check-input" type="checkbox" value='3Star' name='review' id="flexCheckDefault10"
+
+                                            onClick={handleChange}
+                                        ></input>
+                                        <label className="form-check-label" for="flexCheckDefault10"
+                                        >
+                                            3 Star
+                                        </label>
+                                    </div>
+                                    <div className="form-check">
+                                        <input className="form-check-input" type="checkbox" value='4Star' name='review' id="flexCheckDefault11"
+
+                                            onClick={handleChange}
+                                        ></input>
+                                        <label className="form-check-label" for="flexCheckDefault11"
+                                        >
+                                            4 Star
+                                        </label>
+                                    </div>
+                                    <div className="form-check">
+                                        <input className="form-check-input" type="checkbox" value='5Star' name='review' id="flexCheckDefault12"
+
+                                            onClick={handleChange}
+                                        ></input>
+                                        <label className="form-check-label" for="flexCheckDefault12"
+                                        >
+                                            5 Star
+                                        </label>
+                                    </div>
                                 </Accordion.Body>
                             </Accordion.Item>
                             <Accordion.Item eventKey="4">
-                                <Accordion.Header>Facilities</Accordion.Header>
+                                <Accordion.Header>Review Score</Accordion.Header>
                                 <Accordion.Body>
+                                    <div className="form-check">
+                                        <input className="form-check-input" type="checkbox" value='3Review' name='review' id="flexCheckDefault13"
+
+                                            onClick={handleChange}
+                                        ></input>
+                                        <label className="form-check-label" for="flexCheckDefault13"
+                                        >
+                                            3+ Review
+                                        </label>
+                                    </div>
+                                    <div className="form-check">
+                                        <input className="form-check-input" type="checkbox" value='5Review' name='review' id="flexCheckDefault14"
+
+                                            onClick={handleChange}
+                                        ></input>
+                                        <label className="form-check-label" for="flexCheckDefault14"
+                                        >
+                                            5+ Review
+                                        </label>
+                                    </div>
+                                    <div className="form-check">
+                                        <input className="form-check-input" type="checkbox" value='7Review' name='review' id="flexCheckDefault15"
+
+                                            onClick={handleChange}
+                                        ></input>
+                                        <label className="form-check-label" for="flexCheckDefault15"
+                                        >
+                                            7+ Review
+                                        </label>
+                                    </div>
+                                    <div className="form-check">
+                                        <input className="form-check-input" type="checkbox" value='8Review' name='review' id="flexCheckDefault16"
+
+                                            onClick={handleChange}
+                                        ></input>
+                                        <label className="form-check-label" for="flexCheckDefault16"
+                                        >
+                                            8+ Review
+                                        </label>
+                                    </div>
+                                    <div className="form-check">
+                                        <input className="form-check-input" type="checkbox" value='9Review' name='review' id="flexCheckDefault17"
+
+                                            onClick={handleChange}
+                                        ></input>
+                                        <label className="form-check-label" for="flexCheckDefault17"
+                                        >
+                                            9+ Review
+                                        </label>
+                                    </div>
+
                                 </Accordion.Body>
                             </Accordion.Item>
                         </Accordion>

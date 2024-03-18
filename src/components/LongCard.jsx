@@ -4,6 +4,7 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const LongCard = ({ listing }) => {
     return (
@@ -37,8 +38,9 @@ const LongCard = ({ listing }) => {
                                                     {list.name}
                                                 </Link>
                                             </p>
-
-
+                                            {list.stars.map((star) => (
+                                                <FontAwesomeIcon icon={star} className='text-warning mt-1' />
+                                            ))}
                                             <p>{list.location}</p>
                                             <p>{list.text}</p>
                                         </Col>
