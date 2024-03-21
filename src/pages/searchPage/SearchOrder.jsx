@@ -20,6 +20,10 @@ const SearchOrder = ({ setSearchOrder }) => {
                             <select class="form-select form-select-sm  ms-auto text-center" onChange={handleChange}>
                                 <option value="desc">Highest Review Score</option>
                                 <option value="asc">Lowest Review Score</option>
+                                <option value="expensive">Highest Price</option>
+                                <option value="cheap">Lowest Price</option>
+                                <option value="most">Most Visits</option>
+                                <option value="least">Least Visits</option>
                             </select>
 
                         </div>

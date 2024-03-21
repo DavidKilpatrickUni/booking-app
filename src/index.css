@@ -17,6 +17,15 @@ img,
     /* or pre-line */
 }
 
+.text-overflow-clamp {
+    width: 100%;
+    /* this code clamps based on specified lines */
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    display: -webkit-box;
+}
+
 @media only screen and (max-width: 600px) {
     .myTabs {
         max-Height: 400px !important

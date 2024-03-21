@@ -5,6 +5,7 @@ import Row from 'react-bootstrap/Row'
 import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Button } from 'react-bootstrap';
 
 const LongCard = ({ listing }) => {
     return (
@@ -19,7 +20,7 @@ const LongCard = ({ listing }) => {
                                 <Card.Body>
 
                                     <Row>
-                                        <Col className='col-5 col-lg-3 rounded-4 myImg position-relative'
+                                        <Col className='col-5 col-md-5 rounded-4 myImg position-relative'
                                             style={{
                                                 // background: `url(${list.image}) center center no-repeat`,
 
@@ -31,25 +32,57 @@ const LongCard = ({ listing }) => {
                                             {list.ourPick && <p className='position-absolute top-0 end-0 fw-bold'>
                                                 <FontAwesomeIcon icon='fa-certificate' className='text-warning mt-2 me-2' />
                                             </p>}
+                                            {<p className='position-absolute bottom-0 end-0 fw-bold badge bg-primary me-2 d-block d-md-none '>
+                                                {list.reviewScore}
+                                            </p>}
                                         </Col>
-                                        <Col className='col-6 col-lg-8'>
-                                            <small>{list.type}</small>
+                                        <Col className='col-7 col-md-7'>
+                                            <Row>
+                                                <Col className='col-12 col-md-10'>
+                                                    <p className='mb-0'>
+                                                        <Link to={`/${list.location}/${list.category}/${list.name}/${list.refID}`}>
+                                                            {list.name}
+                                                        </Link>
+                                                    </p>
+                                                    <small className='d-block mb-3 mb-lg-0'>{list.location}</small>
+                                                    <small className='d-none d-lg-block mb-3'>{list.address}</small>
+                                                </Col>
+                                                <Col className='d-none d-md-block col-2 ps-0 text-center'>
+                                                    <p className='badge bg-primary fs-6 mb-0'>{list.reviewScore}</p>
+                                                    <small className='mt-0  d-none fw-bold d-md-block'>{list.reviewText}</small>
+                                                </Col>
+                                            </Row>
+                                            <Row className=''>
+                                                <Col className='col-8 '>
+                                                    {list.stars.map((star) => (
+                                                        <FontAwesomeIcon icon={star} className='text-warning mt-1' />
+                                                    ))}
+                                                    <p className=''>{list.type}</p>
+                                                </Col>
+                                                <Col className='col-4 text-end '>
+                                                    <small className='py-0 my-0 fst-italic text-secondary'>From</small>
+                                                    <p className='fw-bold py-0 my-0'>£{list.price}</p>
 
-                                            <p>
-                                                <Link to={`/${list.location}/${list.category}/${list.name}/${list.refID}`}>
-                                                    {list.name}
-                                                </Link>
-                                            </p>
-                                            {list.stars.map((star) => (
-                                                <FontAwesomeIcon icon={star} className='text-warning mt-1' />
-                                            ))}
-                                            <p>{list.location}</p>
-                                            <p>{list.text}</p>
+                                                </Col>
+                                            </Row>
+                                            <Row>
+                                                <Col className='col-12 '>
+                                                    <p className='text-overflow-clamp'
+                                                    >{list.text}</p>
+                                                </Col>
+                                            </Row>
+                                            <Row className='d-none d-lg-block'>
+                                                <Col className=''>
+                                                    <p>           <FontAwesomeIcon icon='fa-eye' className='text-secondary me-1' />Visited: {list.visited}
+                                                        <FontAwesomeIcon icon='fa-pen' className='text-secondary ms-4 me-1' />Reviews: {list.reviewCount}</p>
+                                                </Col>
+                                            </Row>
+
                                         </Col>
-                                        <Col className='col-1'>
-                                            <p className='badge bg-primary'>{list.reviewScore}</p>
-                                        </Col>
+
                                     </Row>
+
+
                                 </Card.Body>
                             </Card>
 

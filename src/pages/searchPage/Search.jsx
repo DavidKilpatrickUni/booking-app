@@ -35,7 +35,7 @@ const Search = () => {
     const removeSearch = removeq.filter((item) => item !== 'search')
     //console.log(removeSearch)
 
-
+    const [cutoff, setCutoff] = useState(4)
 
     const [listing, setListing] = useState([])
     const [loading, setLoading] = useState(true)
@@ -55,6 +55,9 @@ const Search = () => {
 
     const [reviewArray, setReviewArray] = useState([])
     const [reviewDone, setReviewDone] = useState(true)
+
+    const [priceArray, setPriceArray] = useState([])
+    const [priceDone, setPriceDone] = useState(true)
 
     const [pickDone, setPickDone] = useState(true)
 
@@ -93,8 +96,9 @@ const Search = () => {
             // setLocationArray(listings)
             // setTypeArray(listings)
             // setStarArray(listings)
-            setReviewArray(listings)
+            //setReviewArray(listings)
             setOrderedArray(listings)
+            setPriceArray(listings)
 
             if (removeSearch.length > 0) {
                 setRemoveSearchExists(true)
@@ -112,7 +116,7 @@ const Search = () => {
 
         const orderListings = async () => {
             setLoading(true)
-            const reviewSort = [...reviewArray]
+            const reviewSort = [...priceArray]
 
             if (listing != null) {
 
@@ -142,6 +146,70 @@ const Search = () => {
                                 return -1;
                             }
                             if (reviewA > reviewB) {
+                                return 1;
+                            }
+
+                            return 0
+
+                        })
+                        break;
+                    case 'expensive':
+                        reviewSort.sort((a, b) => {
+                            const priceA = a.price;
+                            const priceB = b.price;
+
+                            if (priceA < priceB) {
+                                return 1;
+                            }
+                            if (priceA > priceB) {
+                                return -1;
+                            }
+
+                            return 0
+
+                        })
+                        break;
+                    case 'cheap':
+                        reviewSort.sort((a, b) => {
+                            const priceA = a.price;
+                            const priceB = b.price;
+
+                            if (priceA < priceB) {
+                                return -1;
+                            }
+                            if (priceA > priceB) {
+                                return 1;
+                            }
+
+                            return 0
+
+                        })
+                        break;
+                    case 'most':
+                        reviewSort.sort((a, b) => {
+                            const visitsA = a.visited;
+                            const visitsB = b.visited;
+
+                            if (visitsA < visitsB) {
+                                return 1;
+                            }
+                            if (visitsA > visitsB) {
+                                return -1;
+                            }
+
+                            return 0
+
+                        })
+                        break;
+                    case 'least':
+                        reviewSort.sort((a, b) => {
+                            const visitsA = a.visited;
+                            const visitsB = b.visited;
+
+                            if (visitsA < visitsB) {
+                                return -1;
+                            }
+                            if (visitsA > visitsB) {
                                 return 1;
                             }
 
@@ -339,15 +407,10 @@ const Search = () => {
 
 
 
-
-
-
-
-
     useEffect(() => {
         const orderListings = async () => {
             //console.log(removeSearch)
-            if ((removeSearch.includes('Edinburgh') || removeSearch.includes('Aberdeen') || removeSearch.includes('Glasgow'))) {
+            if ((removeSearch.includes('Edinburgh') || removeSearch.includes('Aberdeen') || removeSearch.includes('Glasgow') || removeSearch.includes('London'))) {
                 let holdArray = []
                 removeSearch.forEach((item) => {
 
@@ -385,6 +448,16 @@ const Search = () => {
 
 
                             break;
+                        case 'London':
+                            listing.forEach((element) => {
+                                if (element.location === 'London') {
+                                    holdArray.push(element)
+                                }
+                            }
+                            )
+
+
+                            break;
                         default:
 
                     }
@@ -396,6 +469,7 @@ const Search = () => {
             } else {
                 setLocationArray(listing)
             }
+            setCutoff(5)
             setLocationDone(!locationDone)
         }
         orderListings()
@@ -463,15 +537,15 @@ const Search = () => {
     useEffect(() => {
         const sortType = async () => {
             //console.log(removeSearch)
-            if ((removeSearch.includes('1Star') || removeSearch.includes('2Star') || removeSearch.includes('3Star') || removeSearch.includes('4Star') || removeSearch.includes('5Star'))) {
+            if ((removeSearch.includes('1-Star') || removeSearch.includes('2-Star') || removeSearch.includes('3-Star') || removeSearch.includes('4-Star') || removeSearch.includes('5-Star'))) {
                 let holdArray = []
                 removeSearch.forEach((item) => {
 
                     // console.log(criteriaArray)
                     switch (item) {
-                        case '1Star':
+                        case '1-Star':
                             // code block
-                            locationArray.forEach((element) => {
+                            typeArray.forEach((element) => {
                                 if (element.stars.length === 1) {
                                     holdArray.push(element)
                                 }
@@ -480,8 +554,8 @@ const Search = () => {
 
 
                             break;
-                        case '2Star':
-                            locationArray.forEach((element) => {
+                        case '2-Star':
+                            typeArray.forEach((element) => {
                                 if (element.stars.length === 2) {
                                     holdArray.push(element)
                                 }
@@ -489,8 +563,8 @@ const Search = () => {
                             )
 
                             break;
-                        case '3Star':
-                            locationArray.forEach((element) => {
+                        case '3-Star':
+                            typeArray.forEach((element) => {
                                 if (element.stars.length === 3) {
                                     holdArray.push(element)
                                 }
@@ -498,8 +572,8 @@ const Search = () => {
                             )
 
                             break;
-                        case '4Star':
-                            locationArray.forEach((element) => {
+                        case '4-Star':
+                            typeArray.forEach((element) => {
                                 if (element.stars.length === 4) {
                                     holdArray.push(element)
                                 }
@@ -507,8 +581,8 @@ const Search = () => {
                             )
 
                             break;
-                        case '5Star':
-                            locationArray.forEach((element) => {
+                        case '5-Star':
+                            typeArray.forEach((element) => {
                                 if (element.stars.length === 5) {
                                     holdArray.push(element)
                                 }
@@ -538,13 +612,13 @@ const Search = () => {
     useEffect(() => {
         const sortType = async () => {
             //console.log(removeSearch)
-            if ((removeSearch.includes('1Review') || removeSearch.includes('2Review') || removeSearch.includes('3Review') || removeSearch.includes('4Review') || removeSearch.includes('5Review') || removeSearch.includes('6Review') || removeSearch.includes('7Review') || removeSearch.includes('8Review') || removeSearch.includes('9Review'))) {
+            if ((removeSearch.includes('1-Review') || removeSearch.includes('2-Review') || removeSearch.includes('3-Review') || removeSearch.includes('4-Review') || removeSearch.includes('5-Review') || removeSearch.includes('6-Review') || removeSearch.includes('7-Review') || removeSearch.includes('8-Review') || removeSearch.includes('9-Review'))) {
                 let holdArray = []
                 removeSearch.forEach((item) => {
 
                     console.log(criteriaArray)
                     switch (item) {
-                        case '1Review':
+                        case '1-Review':
                             // code block
                             starArray.forEach((element) => {
                                 if (element.reviewScore >= 1.0 && element.reviewScore <= 1.9) {
@@ -553,7 +627,7 @@ const Search = () => {
                             }
                             )
                             break;
-                        case '2Review':
+                        case '2-Review':
                             // code block
                             starArray.forEach((element) => {
                                 if (element.reviewScore >= 2.0 && element.reviewScore <= 2.9) {
@@ -562,7 +636,7 @@ const Search = () => {
                             }
                             )
                             break;
-                        case '3Review':
+                        case '3-Review':
                             // code block
                             starArray.forEach((element) => {
                                 if (element.reviewScore >= 3.0 && element.reviewScore <= 3.9) {
@@ -573,7 +647,7 @@ const Search = () => {
 
 
                             break;
-                        case '4Review':
+                        case '4-Review':
                             // code block
                             starArray.forEach((element) => {
                                 if (element.reviewScore >= 4.0 && element.reviewScore <= 4.9) {
@@ -582,7 +656,7 @@ const Search = () => {
                             }
                             )
                             break;
-                        case '5Review':
+                        case '5-Review':
                             starArray.forEach((element) => {
                                 if (element.reviewScore >= 5.0 && element.reviewScore <= 5.9) {
                                     holdArray.push(element)
@@ -591,7 +665,7 @@ const Search = () => {
                             )
 
                             break;
-                        case '6Review':
+                        case '6-Review':
                             // code block
                             starArray.forEach((element) => {
                                 if (element.reviewScore >= 6.0 && element.reviewScore <= 6.9) {
@@ -600,7 +674,7 @@ const Search = () => {
                             }
                             )
                             break;
-                        case '7Review':
+                        case '7-Review':
                             starArray.forEach((element) => {
                                 if (element.reviewScore >= 7.0 && element.reviewScore <= 7.9) {
                                     holdArray.push(element)
@@ -609,7 +683,7 @@ const Search = () => {
                             )
 
                             break;
-                        case '8Review':
+                        case '8-Review':
                             starArray.forEach((element) => {
                                 if (element.reviewScore >= 8.0 && element.reviewScore <= 8.9) {
                                     holdArray.push(element)
@@ -619,7 +693,7 @@ const Search = () => {
 
 
                             break;
-                        case '9Review':
+                        case '9-Review':
                             starArray.forEach((element) => {
                                 if (element.reviewScore >= 9.0) {
                                     holdArray.push(element)
@@ -650,19 +724,106 @@ const Search = () => {
     }, [starDone])
 
     useEffect(() => {
+        const sortType = async () => {
+            //console.log(removeSearch)
+            if ((removeSearch.includes('0-49') || removeSearch.includes('50-99') || removeSearch.includes('100-149') || removeSearch.includes('150-199') || removeSearch.includes('200-249') || removeSearch.includes('250+'))) {
+                let holdArray = []
+                removeSearch.forEach((item) => {
+
+
+                    switch (item) {
+                        case '0-49':
+                            // code block
+                            reviewArray.forEach((element) => {
+                                if (element.price >= 0 && element.price < 50) {
+                                    holdArray.push(element)
+                                }
+                            }
+                            )
+                            break;
+                        case '50-99':
+                            // code block
+                            reviewArray.forEach((element) => {
+                                if (element.price >= 50 && element.price < 100) {
+                                    holdArray.push(element)
+                                }
+                            }
+                            )
+                            break;
+                        case '100-149':
+                            // code block
+                            reviewArray.forEach((element) => {
+                                if (element.price >= 100 && element.price < 150) {
+                                    holdArray.push(element)
+                                }
+                            }
+                            )
+
+
+                            break;
+                        case '150-199':
+                            // code block
+                            reviewArray.forEach((element) => {
+                                if (element.price >= 150 && element.price < 200) {
+                                    holdArray.push(element)
+                                }
+                            }
+                            )
+                            break;
+                        case '200-499':
+                            // code block
+                            reviewArray.forEach((element) => {
+                                if (element.price >= 200 && element.price < 249) {
+                                    holdArray.push(element)
+                                }
+                            }
+                            )
+                            break;
+                        case '250+':
+                            reviewArray.forEach((element) => {
+                                if (element.price >= 250) {
+                                    holdArray.push(element)
+                                }
+                            }
+                            )
+
+                            break;
+
+                        default:
+
+                    }
+
+                })
+                console.log(holdArray)
+                setPriceArray(holdArray)
+
+            } else {
+                setPriceArray(reviewArray)
+            }
+            //console.log(locationArray)
+            //setLoading(false)
+            //setStarDone(!starDone)
+            setPriceDone(!priceDone)
+        }
+
+        sortType()
+    }, [reviewDone])
+
+
+    useEffect(() => {
 
         const sortType = async () => {
             //console.log(removeSearch)
-            if ((removeSearch.includes('ourPick'))) {
+            if ((removeSearch.includes('Our-Pick'))) {
                 let holdArray = []
 
 
                 removeSearch.forEach((item) => {
 
                     switch (item) {
-                        case 'ourPick':
+                        case 'Our-Pick':
                             // code block
-                            setReviewArray((prev) => prev.filter((element) => (
+                            setPriceArray((prev) => prev.filter((element) => (
                                 element.ourPick === true
                             )
                             ))
@@ -686,7 +847,7 @@ const Search = () => {
         // filterType()
         // filterReview()
 
-    }, [reviewDone])
+    }, [priceDone])
 
     const locations = ['Edinburgh', 'London', 'Cardiff']
     const places = ['Stays', 'Attractions', 'Dining']
@@ -727,20 +888,20 @@ const Search = () => {
                         <SearchOrder setSearchOrder={setSearchOrder} />
                     </Col>
                 </Row>
-                <Row>
+                <Row className=''>
                     <Col className='col-12 col-md-10 pt-2'>
                         {removeSearch.map((item, index) => (
-                            <Button className='mx-1 mb-1'
+                            <Button className='mx-1 mt-1' variant="outline-primary"
 
                                 onClick={() => handleClick2(index)
                                 }
                             >{item}
-                                <FontAwesomeIcon icon='circle-xmark' className='ms-2' />
+                                <FontAwesomeIcon icon=' fa-circle-xmark' className='ms-2  ' />
                             </Button>
                         ))}
                     </Col>
                     <Col className='col-12 col-md-2 text-center pt-2'>
-                        <Button variant="outline-secondary"
+                        <Button variant="outline-secondary mt-1"
 
                             onClick={() => {
                                 navigate('/search')
@@ -750,7 +911,7 @@ const Search = () => {
                             Clear Filters</Button>
                     </Col>
                 </Row>
-                <Row>
+                <Row className='mt-1'>
                     <Col className='col-md-3 col-12 order-1 g-0'>
                         <SearchCriteriaHolder possible={orderedArray} />
                     </Col>
@@ -769,7 +930,9 @@ const Search = () => {
                         </Col>}
 
                         <Col className='col-md-9 col-12 order-2 g-0 '>
-                            <SearchCardHolder listing={orderedArray} />
+                            <SearchCardHolder listing={orderedArray.slice(0, cutoff)} />
+                            {orderedArray.length > cutoff && <Button className='w-100 mt-2'
+                                onClick={() => setCutoff((prev) => prev + 2)}>Show More</Button>}
                         </Col>
 
                     </> :
