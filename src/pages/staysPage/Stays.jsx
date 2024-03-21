@@ -80,11 +80,11 @@ const Stays = () => {
 
             })
 
-            setPopularArray(popularSort.slice(0, 5))
+            setPopularArray(popularSort.slice(0, 6))
         }
 
         if (myStays != null) {
-            setOurPickArray(myStays.filter((element) => element.ourPick === true))
+            setOurPickArray(myStays.filter((element) => element.ourPick === true).slice(0, 6))
         }
 
         if (myStays != null) {
@@ -105,7 +105,7 @@ const Stays = () => {
 
             })
 
-            setHighReviewArray(reviewSort.slice(0, 5))
+            setHighReviewArray(reviewSort.slice(0, 6))
             setLoading(false)
         }
 

@@ -4,6 +4,7 @@ import SearchBar from './SearchBar'
 import SearchCardHolder from './SearchCardHolder'
 import SearchCriteriaHolder from './SearchCriteriaHolder'
 import Accordion from 'react-bootstrap/Accordion';
+import Pagination from 'react-bootstrap/Pagination';
 
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
@@ -15,6 +16,9 @@ import { collection, getDocs, where, query, orderBy, limit, startAfter } from 'f
 import { db } from '../../firebase.config'
 import SearchOrder from './SearchOrder'
 import { useNavigate, useParams, useLocation, Link } from 'react-router-dom'
+import Button from 'react-bootstrap/Button'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 
 
 const Search = () => {
@@ -29,7 +33,7 @@ const Search = () => {
     const removeSpace = paramArray.filter((item) => item !== '')
     const removeq = removeSpace.filter((item) => item !== 'q')
     const removeSearch = removeq.filter((item) => item !== 'search')
-    console.log(removeSearch)
+    //console.log(removeSearch)
 
 
 
@@ -52,14 +56,31 @@ const Search = () => {
     const [reviewArray, setReviewArray] = useState([])
     const [reviewDone, setReviewDone] = useState(true)
 
+    const [pickDone, setPickDone] = useState(true)
+
     const [removeSearchExists, setRemoveSearchExists] = useState(false)
+
+    const handleClick = () => {
+
+
+    }
+
 
     useEffect(() => {
 
         const fetchListings = async () => {
 
             const listingsRef = collection(db, 'listings')
-            const collectionSnap = await getDocs(listingsRef)
+
+            const q = query(
+                listingsRef,
+
+                orderBy('reviewScore', 'desc')
+
+            )
+
+            const collectionSnap = await getDocs(q)
+
 
             let listings = []
 
@@ -69,10 +90,11 @@ const Search = () => {
                 )
             })
             setListing(listings)
-            setLocationArray(listings)
-            setTypeArray(listings)
-            setStarArray(listings)
+            // setLocationArray(listings)
+            // setTypeArray(listings)
+            // setStarArray(listings)
             setReviewArray(listings)
+            setOrderedArray(listings)
 
             if (removeSearch.length > 0) {
                 setRemoveSearchExists(true)
@@ -84,62 +106,64 @@ const Search = () => {
     }, [])
 
 
-    // useEffect(() => {
+    useEffect(() => {
 
-    //     const orderListings = async () => {
 
-    //         const reviewSort = [...listing]
 
-    //         if (listing != null) {
+        const orderListings = async () => {
+            setLoading(true)
+            const reviewSort = [...reviewArray]
 
-    //             switch (searchOrder) {
-    //                 case 'desc':
-    //                     reviewSort.sort((a, b) => {
-    //                         const reviewA = a.reviewScore;
-    //                         const reviewB = b.reviewScore;
+            if (listing != null) {
 
-    //                         if (reviewA < reviewB) {
-    //                             return 1;
-    //                         }
-    //                         if (reviewA > reviewB) {
-    //                             return -1;
-    //                         }
+                switch (searchOrder) {
+                    case 'desc':
+                        reviewSort.sort((a, b) => {
+                            const reviewA = a.reviewScore;
+                            const reviewB = b.reviewScore;
 
-    //                         return 0
+                            if (reviewA < reviewB) {
+                                return 1;
+                            }
+                            if (reviewA > reviewB) {
+                                return -1;
+                            }
 
-    //                     })
-    //                     break;
-    //                 case 'asc':
-    //                     reviewSort.sort((a, b) => {
-    //                         const reviewA = a.reviewScore;
-    //                         const reviewB = b.reviewScore;
+                            return 0
 
-    //                         if (reviewA < reviewB) {
-    //                             return -1;
-    //                         }
-    //                         if (reviewA > reviewB) {
-    //                             return 1;
-    //                         }
+                        })
+                        break;
+                    case 'asc':
+                        reviewSort.sort((a, b) => {
+                            const reviewA = a.reviewScore;
+                            const reviewB = b.reviewScore;
 
-    //                         return 0
+                            if (reviewA < reviewB) {
+                                return -1;
+                            }
+                            if (reviewA > reviewB) {
+                                return 1;
+                            }
 
-    //                     })
-    //                     break;
-    //                 default:
+                            return 0
 
-    //             }
+                        })
+                        break;
+                    default:
 
-    //             setOrderedArray(reviewSort)
+                }
 
-    //         }
+                setOrderedArray(reviewSort)
+                setLoading(false)
+            }
 
-    //     }
+        }
 
-    //     orderListings()
-    //     setLoading(false)
-    //     //setCriteriaArray(orderedArray)
-
-    // }, [listing, searchOrder])
+        orderListings()
+        //setLoading(false)
+        //setCriteriaArray(orderedArray)
+        // console.log(orderedArray)
+    }, [searchOrder, pickDone])
 
     // useEffect(() => {
 
@@ -366,7 +390,7 @@ const Search = () => {
                     }
 
                 })
-                console.log(holdArray)
+                //console.log(holdArray)
                 setLocationArray(holdArray)
 
             } else {
@@ -514,35 +538,71 @@ const Search = () => {
     useEffect(() => {
         const sortType = async () => {
             //console.log(removeSearch)
-            if ((removeSearch.includes('3Review') || removeSearch.includes('5Review') || removeSearch.includes('7Review') || removeSearch.includes('8Review') || removeSearch.includes('9Review'))) {
+            if ((removeSearch.includes('1Review') || removeSearch.includes('2Review') || removeSearch.includes('3Review') || removeSearch.includes('4Review') || removeSearch.includes('5Review') || removeSearch.includes('6Review') || removeSearch.includes('7Review') || removeSearch.includes('8Review') || removeSearch.includes('9Review'))) {
                 let holdArray = []
                 removeSearch.forEach((item) => {
 
-                    // console.log(criteriaArray)
+                    console.log(criteriaArray)
                     switch (item) {
+                        case '1Review':
+                            // code block
+                            starArray.forEach((element) => {
+                                if (element.reviewScore >= 1.0 && element.reviewScore <= 1.9) {
+                                    holdArray.push(element)
+                                }
+                            }
+                            )
+                            break;
+                        case '2Review':
+                            // code block
+                            starArray.forEach((element) => {
+                                if (element.reviewScore >= 2.0 && element.reviewScore <= 2.9) {
+                                    holdArray.push(element)
+                                }
+                            }
+                            )
+                            break;
                         case '3Review':
                             // code block
                             starArray.forEach((element) => {
-                                if (element.reviewScore >= 3) {
+                                if (element.reviewScore >= 3.0 && element.reviewScore <= 3.9) {
                                     holdArray.push(element)
                                 }
                             }
                             )
 
 
+                            break;
+                        case '4Review':
+                            // code block
+                            starArray.forEach((element) => {
+                                if (element.reviewScore >= 4.0 && element.reviewScore <= 4.9) {
+                                    holdArray.push(element)
+                                }
+                            }
+                            )
                             break;
                         case '5Review':
                             starArray.forEach((element) => {
-                                if (element.reviewScore >= 5) {
+                                if (element.reviewScore >= 5.0 && element.reviewScore <= 5.9) {
                                     holdArray.push(element)
                                 }
                             }
                             )
 
                             break;
+                        case '6Review':
+                            // code block
+                            starArray.forEach((element) => {
+                                if (element.reviewScore >= 6.0 && element.reviewScore <= 6.9) {
+                                    holdArray.push(element)
+                                }
+                            }
+                            )
+                            break;
                         case '7Review':
                             starArray.forEach((element) => {
-                                if (element.reviewScore >= 7.0) {
+                                if (element.reviewScore >= 7.0 && element.reviewScore <= 7.9) {
                                     holdArray.push(element)
                                 }
                             }
@@ -551,7 +611,7 @@ const Search = () => {
                             break;
                         case '8Review':
                             starArray.forEach((element) => {
-                                if (element.reviewScore >= 8.0) {
+                                if (element.reviewScore >= 8.0 && element.reviewScore <= 8.9) {
                                     holdArray.push(element)
                                 }
                             }
@@ -590,25 +650,10 @@ const Search = () => {
     }, [starDone])
 
     useEffect(() => {
-        const filterType = async () => {
-            if (removeSearch.includes('ourPick')) {
-                setTypeArray(typeArray.filter((item) => item.ourPick))
-            }
-
-
-            //setLoading(false)
-        }
-
-        const filterReview = async () => {
-            if (removeSearch.includes('review')) {
-                setTypeArray(typeArray.filter((item) => item.reviewScore > 9))
-            }
-            setLoading(false)
-        }
 
         const sortType = async () => {
             //console.log(removeSearch)
-            if ((removeSearch.includes('review') || removeSearch.includes('ourPick'))) {
+            if ((removeSearch.includes('ourPick'))) {
                 let holdArray = []
 
 
@@ -623,12 +668,7 @@ const Search = () => {
                             ))
 
                             break;
-                        case 'review':
-                            setReviewArray((prev) => prev.filter((element) => (
-                                element.reviewScore < 8.5
-                            )
-                            ))
-                            break;
+
                         default:
 
                     }
@@ -639,6 +679,7 @@ const Search = () => {
             } else {
 
             }
+            setPickDone(!pickDone)
             setLoading(false)
         }
         sortType()
@@ -652,9 +693,16 @@ const Search = () => {
 
 
 
+    const handleClick2 = (index) => {
+        delete removeSearch[index]
+
+        navigate(`q/${removeSearch.join('/')}`)
+    }
+
+
     return (
         <>
-            {!loading && <Container>
+            <Container>
                 <Row>
                     <Col>
                         <Title>
@@ -668,39 +716,79 @@ const Search = () => {
                     </Col>
                 </Row>
                 <hr />
-                <Row>
-                    <Col>
-                        <p className='text-primary'>Search Criteria:</p>
+                <Row className='d-flex flex-column flex-md-row justify-content-center'>
+                    <Col className='col-md-6 col-12 text-center text-md-start'>
+                        <p className=''>
+                            Stays Found: <span className='fw-bold'>{orderedArray.length}</span>
+                        </p>
                     </Col>
-                    <Col className='text-end'>
+
+                    <Col className='col-md-6 col-12 px-5 px-md-0'>
                         <SearchOrder setSearchOrder={setSearchOrder} />
                     </Col>
                 </Row>
                 <Row>
+                    <Col className='col-12 col-md-10 pt-2'>
+                        {removeSearch.map((item, index) => (
+                            <Button className='mx-1 mb-1'
+
+                                onClick={() => handleClick2(index)
+                                }
+                            >{item}
+                                <FontAwesomeIcon icon='circle-xmark' className='ms-2' />
+                            </Button>
+                        ))}
+                    </Col>
+                    <Col className='col-12 col-md-2 text-center pt-2'>
+                        <Button variant="outline-secondary"
+
+                            onClick={() => {
+                                navigate('/search')
+
+                            }}
+                        >
+                            Clear Filters</Button>
+                    </Col>
+                </Row>
+                <Row>
                     <Col className='col-md-3 col-12 order-1 g-0'>
-                        <SearchCriteriaHolder />
+                        <SearchCriteriaHolder possible={orderedArray} />
                     </Col>
 
-                    {loading && <Col className='col-md-9 col-12 order-2 g-0 text-center text-primary'>
+                    {/* {loading && <Col className='col-md-9 col-12 order-2 g-0 text-center text-primary'>
                         <Spinner animation="border" role="status">
                             <span className="visually-hidden">Loading...</span>
                         </Spinner>
-                    </Col>}
+                    </Col>} */}
 
 
-                    <Col className='col-md-9 col-12 order-2 g-0 d-flex align-items-center'>
-                        {reviewArray.length > 0 ? <SearchCardHolder listing={reviewArray} />
-                            :
-                            <div className=''>
-                                <h1 className='text-center'>Sorry Nothing Matching That Criteria</h1>
-                            </div>
+                    {!loading ? <>
 
-                        }
-                    </Col>
+                        {orderedArray.length === 0 && <Col className='col-md-9 col-12 order-2 g-0 d-flex justify-content-center align-items-center'>
+                            <h2>Nothing Matching Criteria</h2>
+                        </Col>}
+
+                        <Col className='col-md-9 col-12 order-2 g-0 '>
+                            <SearchCardHolder listing={orderedArray} />
+                        </Col>
+
+                    </> :
+
+                        <Col className='col-md-9 col-12 order-2 g-0 text-center text-primary'>
+                            <Spinner animation="border" role="status">
+                                <span className="visually-hidden">Loading...</span>
+                            </Spinner>
+                        </Col>
+
+                    }
+
                 </Row>
+
+
+
             </Container >
 
-            }
+
 
         </>
     )

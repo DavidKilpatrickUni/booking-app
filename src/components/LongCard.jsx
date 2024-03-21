@@ -14,12 +14,12 @@ const LongCard = ({ listing }) => {
                 <Row className='d-flex flex-column flex-md-row'>
 
                     {listing.map((list) => (
-                        <Col className='col-md-12 my-1'>
+                        <Col className='col-md-12 my-1 w-100'>
                             <Card>
                                 <Card.Body>
 
                                     <Row>
-                                        <Col className='col-5 col-lg-3 rounded-4 myImg'
+                                        <Col className='col-5 col-lg-3 rounded-4 myImg position-relative'
                                             style={{
                                                 // background: `url(${list.image}) center center no-repeat`,
 
@@ -28,7 +28,9 @@ const LongCard = ({ listing }) => {
                                                 backgroundPosition: 'center',
                                                 backgroundRepeat: 'no'
                                             }}>
-
+                                            {list.ourPick && <p className='position-absolute top-0 end-0 fw-bold'>
+                                                <FontAwesomeIcon icon='fa-certificate' className='text-warning mt-2 me-2' />
+                                            </p>}
                                         </Col>
                                         <Col className='col-6 col-lg-8'>
                                             <small>{list.type}</small>

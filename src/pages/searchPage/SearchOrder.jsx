@@ -17,7 +17,7 @@ const SearchOrder = ({ setSearchOrder }) => {
                 <Row>
                     <Col className=''>
                         <div>
-                            <select class="form-select form-select-sm w-75 ms-auto" onChange={handleChange}>
+                            <select class="form-select form-select-sm  ms-auto text-center" onChange={handleChange}>
                                 <option value="desc">Highest Review Score</option>
                                 <option value="asc">Lowest Review Score</option>
                             </select>

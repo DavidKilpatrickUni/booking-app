@@ -5,7 +5,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { useNavigate, useParams, useLocation, Link } from 'react-router-dom'
 
-const SearchCriteriaHolder = () => {
+const SearchCriteriaHolder = ({ possible }) => {
 
     const [criteriaArray, setCriteriaArray] = useState(true)
 
@@ -22,6 +22,21 @@ const SearchCriteriaHolder = () => {
     const removeSearch = removeq.filter((item) => item !== 'search')
     //console.log(removeSearch)
 
+    useEffect(() => {
+
+        let checkboxes = document.getElementsByClassName('form-check-input')
+
+        for (let i = 0; i < checkboxes.length; i++) {
+            checkboxes[i].checked = false
+        }
+
+        removeSearch.forEach((item) => (
+            document.getElementById(item).checked = true
+        ))
+
+        //console.log(checkboxes)
+
+    }, [location])
 
 
     const handleChange = (e) => {
@@ -69,6 +84,7 @@ const SearchCriteriaHolder = () => {
 
 
 
+
     return (
 
         <>
@@ -81,37 +97,44 @@ const SearchCriteriaHolder = () => {
                             <Accordion.Item eventKey="0" >
                                 <Accordion.Header>Location</Accordion.Header>
                                 <Accordion.Body>
+
                                     <div className="form-check">
-                                        <input className="form-check-input" type="checkbox" value="Aberdeen" name='location' id="flexCheckDefault"
+                                        <input className="form-check-input" type="checkbox" value="Aberdeen"
+                                            name='location'
+                                            id="Aberdeen"
+
                                             onClick={handleChange}
-                                        ></input>
-                                        <label className="form-check-label" for="flexCheckDefault" value='Aberdeen'
                                         >
+                                        </input>
+                                        <label className="form-check-label" for="Aberdeen">
                                             Aberdeen
                                         </label>
                                     </div>
                                     <div className="form-check">
                                         <input className="form-check-input" type="checkbox" value="Edinburgh"
                                             name='location'
-                                            id="flexCheckChecked"
+                                            id="Edinburgh"
+
                                             onClick={handleChange}
                                         >
                                         </input>
-                                        <label className="form-check-label" for="flexCheckChecked">
+                                        <label className="form-check-label" for="Edinburgh">
                                             Edinburgh
                                         </label>
                                     </div>
                                     <div className="form-check">
                                         <input className="form-check-input" type="checkbox" value="Glasgow"
                                             name='location'
-                                            id="flexCheckChecked2"
+                                            id="Glasgow"
+
                                             onClick={handleChange}
                                         >
                                         </input>
-                                        <label className="form-check-label" for="flexCheckChecked2">
+                                        <label className="form-check-label" for="Glasgow">
                                             Glasgow
                                         </label>
                                     </div>
+
                                 </Accordion.Body>
                             </Accordion.Item>
                             <Accordion.Item eventKey="1">
@@ -222,13 +245,43 @@ const SearchCriteriaHolder = () => {
                                 <Accordion.Header>Review Score</Accordion.Header>
                                 <Accordion.Body>
                                     <div className="form-check">
+                                        <input className="form-check-input" type="checkbox" value='5Review' name='1review' id="flexCheckDefault28"
+
+                                            onClick={handleChange}
+                                        ></input>
+                                        <label className="form-check-label" for="flexCheckDefault28"
+                                        >
+                                            1 Score
+                                        </label>
+                                    </div>
+                                    <div className="form-check">
+                                        <input className="form-check-input" type="checkbox" value='2Review' name='review' id="flexCheckDefault27"
+
+                                            onClick={handleChange}
+                                        ></input>
+                                        <label className="form-check-label" for="flexCheckDefault27"
+                                        >
+                                            2 Score
+                                        </label>
+                                    </div>
+                                    <div className="form-check">
                                         <input className="form-check-input" type="checkbox" value='3Review' name='review' id="flexCheckDefault13"
 
                                             onClick={handleChange}
                                         ></input>
                                         <label className="form-check-label" for="flexCheckDefault13"
                                         >
-                                            3+ Review
+                                            3 Score
+                                        </label>
+                                    </div>
+                                    <div className="form-check">
+                                        <input className="form-check-input" type="checkbox" value='4Review' name='review' id="flexCheckDefault23"
+
+                                            onClick={handleChange}
+                                        ></input>
+                                        <label className="form-check-label" for="flexCheckDefault23"
+                                        >
+                                            4 Score
                                         </label>
                                     </div>
                                     <div className="form-check">
@@ -238,7 +291,17 @@ const SearchCriteriaHolder = () => {
                                         ></input>
                                         <label className="form-check-label" for="flexCheckDefault14"
                                         >
-                                            5+ Review
+                                            5 Score
+                                        </label>
+                                    </div>
+                                    <div className="form-check">
+                                        <input className="form-check-input" type="checkbox" value='6Review' name='review' id="flexCheckDefault22"
+
+                                            onClick={handleChange}
+                                        ></input>
+                                        <label className="form-check-label" for="flexCheckDefault22"
+                                        >
+                                            6 Score
                                         </label>
                                     </div>
                                     <div className="form-check">
@@ -248,7 +311,7 @@ const SearchCriteriaHolder = () => {
                                         ></input>
                                         <label className="form-check-label" for="flexCheckDefault15"
                                         >
-                                            7+ Review
+                                            7 Score
                                         </label>
                                     </div>
                                     <div className="form-check">
@@ -258,7 +321,7 @@ const SearchCriteriaHolder = () => {
                                         ></input>
                                         <label className="form-check-label" for="flexCheckDefault16"
                                         >
-                                            8+ Review
+                                            8 Score
                                         </label>
                                     </div>
                                     <div className="form-check">
@@ -268,7 +331,7 @@ const SearchCriteriaHolder = () => {
                                         ></input>
                                         <label className="form-check-label" for="flexCheckDefault17"
                                         >
-                                            9+ Review
+                                            9 Score
                                         </label>
                                     </div>
 
