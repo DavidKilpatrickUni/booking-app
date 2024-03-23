@@ -27,18 +27,27 @@ const TabCard = ({ info }) => {
                     <Col className='col-6 position-relative'>
                         <img src={info.image} alt='' className='img-fluid rounded-3 h-100 ' />
                         <p className='badge bg-primary fs-6 d-inline d-lg-none position-absolute end-0 me-4 me-lg-1 mt-2 mt-lg-1'>
-                            {info.reviewScore}
+                            {info.reviewScore.toFixed(1)}
                         </p>
                     </Col>
 
                     <Col className='col-6'>
-                        <div className='d-flex justify-content-between my-0'>
-                            <h6 >
-                                {info.name}
-                            </h6>
-                            <p className='badge bg-primary fs-6 my-0 d-none d-lg-inline'>
-                                {info.reviewScore}
-                            </p>
+                        <Row>
+                            <Col className='col-8'>
+                                <h6 className=''>
+                                    {info.name}
+                                </h6>
+                            </Col>
+                            <Col className='col-4'>
+
+                                <p className='badge bg-primary fs-6 my-0 d-none d-lg-block ms-auto'>
+                                    {info.reviewScore.toFixed(1)}
+                                </p>
+                            </Col>
+                        </Row>
+                        <div className='d-flex '>
+
+
                         </div>
 
                         <p className='my-sm-1 my-0 fst-italic'>{info.type}</p>

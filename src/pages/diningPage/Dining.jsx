@@ -232,7 +232,7 @@ const Dining = () => {
     }, [])
 
 
-    // console.log(myData)
+    console.log(myData)
 
     return (
 
@@ -286,7 +286,7 @@ const Dining = () => {
                 <hr />
                 <Row>
                     <Col id='overview'>
-                        <PlaceImageBlock3 data={data} />
+                        <PlaceImageBlock3 data={myData} />
                     </Col>
                 </Row>
                 <Row>

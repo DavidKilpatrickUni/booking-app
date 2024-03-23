@@ -24,6 +24,7 @@ const Stays = () => {
 
     const [loading, setLoading] = useState(true)
 
+
     useEffect(() => {
 
         const fetchData = async () => {
@@ -114,8 +115,21 @@ const Stays = () => {
     // console.log(myLocations)
     console.log(highReviewArray)
 
-    const locations = ['Edinburgh', 'London', 'Cardiff']
-    const stays = ['Hotel', 'B&B', 'Camping', 'Apartment']
+    const locations = [
+        {
+            location: 'Aberdeen',
+            refID: 'kOdNplPNb5qN0q87p8FI'
+        },
+        {
+            location: 'Edinburgh',
+            refID: 'PxivP523oeXKTs4f9NW8'
+        },
+        {
+            location: 'London',
+            refID: 'gceCdMAypuywCSvfffGO'
+        },
+    ]
+    const stays = ['Hotel', 'Studio', 'Apartment']
 
     const array3 = [
         {

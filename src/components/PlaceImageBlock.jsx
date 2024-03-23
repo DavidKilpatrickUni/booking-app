@@ -55,14 +55,14 @@ const PlaceImageBlock = ({ children, data }) => {
                                 <Col className='col-12'
                                     onClick={() => handleShow(0)}
                                 >
-                                    <img src={data.images[0]} alt='' className='img-fluid rounded' />
+                                    <img src={data.images[0].image} alt='' className='img-fluid rounded' />
                                 </Col>
                             </Row>
                             <Row className='mt-1'>
                                 <Col className='col-12'
                                     onClick={() => handleShow(1)}
                                 >
-                                    <img src={data.images[1]} alt='' className='img-fluid rounded' />
+                                    <img src={data.images[1].image} alt='' className='img-fluid rounded' />
                                 </Col>
                             </Row>
                         </Col>
@@ -72,14 +72,14 @@ const PlaceImageBlock = ({ children, data }) => {
                                 <Col className='col-12 '
                                     onClick={() => handleShow(2)}
                                 >
-                                    <img src={data.images[2]} alt='' className='img-fluid rounded' />
+                                    <img src={data.images[2].image} alt='' className='img-fluid rounded' />
                                 </Col>
                             </Row>
                             <Row className='mt-1'>
                                 <Col className='col-12 h-100 position-relative'
                                     onClick={() => handleShow(3)}
                                 >
-                                    <img src={data.images[3]} alt='' className='img-fluid rounded' style={{ opacity: '0.7' }} />
+                                    <img src={data.images[3].image} alt='' className='img-fluid rounded' style={{ opacity: '0.7' }} />
                                     <p className='position-absolute top-50 start-50 translate-middle text-white fw-bold '>
                                         <u>+{data.images.length} Photos</u>
                                     </p>
@@ -90,7 +90,7 @@ const PlaceImageBlock = ({ children, data }) => {
                         <Col className='col-md-8 h-100 mb-1 d-none d-md-flex'
                             onClick={() => handleShow(2)}
                         >
-                            <img src={data.images[2]} alt='' className='img-fluid rounded' />
+                            <img src={data.images[2].image} alt='' className='img-fluid rounded' />
                         </Col>
                     </Row>
 
@@ -99,13 +99,13 @@ const PlaceImageBlock = ({ children, data }) => {
                             <Col className='col-md-3 '
                                 onClick={() => handleShow(index + 3)}
                             >
-                                <img src={pic} alt='' className='img-fluid rounded' />
+                                <img src={pic.image} alt='' className='img-fluid rounded' />
                             </Col>
                         ))}
                         <Col className='col-md-3 position-relative'
                             onClick={() => handleShow(6)}
                         >
-                            <img src={data.images[6]} alt='' className='img-fluid rounded' style={{ opacity: '0.7' }} />
+                            <img src={data.images[6].image} alt='' className='img-fluid rounded' style={{ opacity: '0.7' }} />
                             <p className='position-absolute top-50 start-50 translate-middle text-white fw-bold '>
                                 <u>+{data.images.length} Photos</u>
                             </p>

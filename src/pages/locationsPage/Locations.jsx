@@ -125,7 +125,20 @@ const Locations = () => {
     // console.log(ourPickArray)
     // console.log(highReviewArray)
 
-    const locations = ['Edinburgh', 'London', 'Cardiff']
+    const locations = [
+        {
+            location: 'Aberdeen',
+            refID: 'kOdNplPNb5qN0q87p8FI'
+        },
+        {
+            location: 'Edinburgh',
+            refID: 'PxivP523oeXKTs4f9NW8'
+        },
+        {
+            location: 'London',
+            refID: 'gceCdMAypuywCSvfffGO'
+        },
+    ]
 
     const array = [
         {

@@ -11,6 +11,7 @@ import SmallSwiper from '../../components/SmallSwiper'
 import InteractiveMap from '../../components/InteractiveMap'
 import Nav from 'react-bootstrap/Nav';
 
+import PlaceImageBlock4 from '../../components/PlaceImageBlock4'
 
 import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet'
 import * as L from "leaflet";
@@ -119,8 +120,8 @@ const Location = () => {
 
 
 
-    // console.log(myData)
-    console.log(myStays)
+    console.log(myData)
+    //console.log(myStays)
     //console.log(myAttractions)
 
     const array4 = [
@@ -386,6 +387,9 @@ const Location = () => {
                         <Col>
                             <Nav justify defaultActiveKey="/home">
                                 <Nav.Item>
+                                    <Nav.Link href="#overview">Overview</Nav.Link>
+                                </Nav.Item>
+                                <Nav.Item>
                                     <Nav.Link href="#highlights">Highlights</Nav.Link>
                                 </Nav.Item>
                                 <Nav.Item>
@@ -408,19 +412,27 @@ const Location = () => {
                         </Col>
                     </Row>
                     <hr />
+
+                    <Row id='overview'>
+                        <Col>
+                            <PlaceImageBlock4 data={myData}>
+                            </PlaceImageBlock4>
+                        </Col>
+                    </Row>
                     <Row>
                         <Col>
                             <p>{myData.text}</p>
                         </Col>
                     </Row>
-                    {/* <Row>
-                    <Col id='highlights'>
-                        <BigSwiper array4={array4}>
-                            <h1>Highlights</h1>
-                            <p>Best {featured.location} Has To Offer</p>
-                        </BigSwiper>
-                    </Col>
-                </Row> */}
+                    <hr />
+                    <Row>
+                        <Col id='highlights'>
+                            <BigSwiper array4={array4}>
+                                <h1>Highlights</h1>
+                                <p>Best {myData.location} Has To Offer</p>
+                            </BigSwiper>
+                        </Col>
+                    </Row>
                     <hr />
                     <h1 id='map'>
                         Interactive Map

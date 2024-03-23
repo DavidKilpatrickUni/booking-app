@@ -50,7 +50,7 @@ const PlaceImageBlock3 = ({ children, data }) => {
                             <Row className=''>
                                 <Col className='my-1 me-1 rounded-top rounded-end-0'
                                     onClick={() => handleShow(0)}
-                                    style={{ background: `url(${data.images[0]}) center center no-repeat`, backgroundSize: 'cover', width: 'auto', height: '280px', cursor: 'pointer' }}>
+                                    style={{ background: `url(${data.images[0].image}) center center no-repeat`, backgroundSize: 'cover', width: 'auto', height: '280px', cursor: 'pointer' }}>
                                 </Col>
                             </Row >
                             <Row>
@@ -58,11 +58,11 @@ const PlaceImageBlock3 = ({ children, data }) => {
                                 rounded-bottom
                                 rounded-end-0'
                                     onClick={() => handleShow(1)}
-                                    style={{ background: `url(${data.images[1]}) center center no-repeat`, backgroundSize: 'cover', width: 'auto', height: '138px', cursor: 'pointer' }}>
+                                    style={{ background: `url(${data.images[1].image}) center center no-repeat`, backgroundSize: 'cover', width: 'auto', height: '138px', cursor: 'pointer' }}>
                                 </Col>
                                 <Col className='me-1'
                                     onClick={() => handleShow(2)}
-                                    style={{ background: `url(${data.images[2]}) center center no-repeat`, backgroundSize: 'cover', width: 'auto', height: '138px', cursor: 'pointer' }}>
+                                    style={{ background: `url(${data.images[2].image}) center center no-repeat`, backgroundSize: 'cover', width: 'auto', height: '138px', cursor: 'pointer' }}>
 
                                 </Col>
                             </Row >
@@ -71,16 +71,16 @@ const PlaceImageBlock3 = ({ children, data }) => {
                         >
                             <div className='me-1 mt-1 rounded-top rounded-start-0'
                                 onClick={() => handleShow(3)}
-                                style={{ background: `url(${data.images[3]}) center center no-repeat`, backgroundSize: 'cover', width: 'auto', height: '138px', cursor: 'pointer' }}>
+                                style={{ background: `url(${data.images[3].image}) center center no-repeat`, backgroundSize: 'cover', width: 'auto', height: '138px', cursor: 'pointer' }}>
                             </div>
 
                             <div className='me-1 mt-1'
                                 onClick={() => handleShow(4)}
-                                style={{ background: `url(${data.images[4]}) center center no-repeat`, backgroundSize: 'cover', width: 'auto', height: '138px', cursor: 'pointer' }}>
+                                style={{ background: `url(${data.images[4].image}) center center no-repeat`, backgroundSize: 'cover', width: 'auto', height: '138px', cursor: 'pointer' }}>
                             </div>
                             <div className='me-1 mt-1 rounded-bottom rounded-start-0 position-relative'
                                 onClick={() => handleShow(5)}
-                                style={{ background: `url(${data.images[5]}) center center no-repeat`, backgroundSize: 'cover', width: 'auto', height: '138px', cursor: 'pointer', opacity: '0.7' }}>
+                                style={{ background: `url(${data.images[5].image}) center center no-repeat`, backgroundSize: 'cover', width: 'auto', height: '138px', cursor: 'pointer', opacity: '0.7' }}>
                                 <p className='position-absolute text-white top-50 start-50 translate-middle fw-bold'>
                                     <u>+{data.images.length} Photos</u>
                                 </p>

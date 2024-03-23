@@ -59,8 +59,8 @@ const PlaceSwiper = ({ data }) => {
 
                 {data.images.map((pic, index) => (
                     <SwiperSlide>
-                        <img src={pic} alt='' className='img-fluid' 
-                        onClick={() => handleShow(index)}/>
+                        <img src={pic.image} alt='' className='img-fluid'
+                            onClick={() => handleShow(index)} />
                     </SwiperSlide>
                 ))}
             </Swiper>

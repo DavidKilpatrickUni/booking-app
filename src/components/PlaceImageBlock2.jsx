@@ -49,41 +49,41 @@ const PlaceImageBlock2 = ({ children, data }) => {
                         <Col className='col-7 p-0 '      >
                             <div className='my-1 me-1 rounded-start'
                                 onClick={() => handleShow(0)}
-                                style={{ background: `url(${data.images[0]}) center center no-repeat`, backgroundSize: 'cover', width: 'auto', height: '412px', cursor: 'pointer' }}>
+                                style={{ background: `url(${data.images[0].image}) center center no-repeat`, backgroundSize: 'cover', width: 'auto', height: '412px', cursor: 'pointer' }}>
                             </div>
                         </Col>
                         <Col className='col-3 p-0 '
                         >
                             <div className='me-1 mt-1'
                                 onClick={() => handleShow(1)}
-                                style={{ background: `url(${data.images[1]}) center center no-repeat`, backgroundSize: 'cover', width: 'auto', height: '204px', cursor: 'pointer' }}>
+                                style={{ background: `url(${data.images[1].image}) center center no-repeat`, backgroundSize: 'cover', width: 'auto', height: '204px', cursor: 'pointer' }}>
                             </div>
 
                             <div className='me-1 mt-1'
                                 onClick={() => handleShow(2)}
-                                style={{ background: `url(${data.images[2]}) center center no-repeat`, backgroundSize: 'cover', width: 'auto', height: '204px', cursor: 'pointer' }}>
+                                style={{ background: `url(${data.images[2].image}) center center no-repeat`, backgroundSize: 'cover', width: 'auto', height: '204px', cursor: 'pointer' }}>
                             </div>
                         </Col>
 
                         <Col className='col-2 p-0'>
                             <div className='my-1 rounded-end rounded-bottom-0 '
                                 onClick={() => handleShow(3)}
-                                style={{ background: `url(${data.images[3]}) center center no-repeat`, backgroundSize: 'cover', width: 'auto', height: '100px', cursor: 'pointer' }}>
+                                style={{ background: `url(${data.images[3].image}) center center no-repeat`, backgroundSize: 'cover', width: 'auto', height: '100px', cursor: 'pointer' }}>
                             </div>
 
                             <div className='my-1'
                                 onClick={() => handleShow(4)}
-                                style={{ background: `url(${data.images[4]}) center center no-repeat`, backgroundSize: 'cover', width: 'auto', height: '100px', cursor: 'pointer' }}>
+                                style={{ background: `url(${data.images[4].image}) center center no-repeat`, backgroundSize: 'cover', width: 'auto', height: '100px', cursor: 'pointer' }}>
                             </div>
 
                             <div className='my-1'
                                 onClick={() => handleShow(5)}
-                                style={{ background: `url(${data.images[5]}) center center no-repeat`, backgroundSize: 'cover', width: 'auto', height: '100px', cursor: 'pointer' }}>
+                                style={{ background: `url(${data.images[5].image}) center center no-repeat`, backgroundSize: 'cover', width: 'auto', height: '100px', cursor: 'pointer' }}>
                             </div>
 
                             <div className='my-1 rounded-start-0 rounded-bottom  position-relative'
                                 onClick={() => handleShow(6)}
-                                style={{ background: `url(${data.images[6]}) center center no-repeat`, backgroundSize: 'cover', width: 'auto', height: '100px', cursor: 'pointer', opacity: '0.7' }}>
+                                style={{ background: `url(${data.images[6].image}) center center no-repeat`, backgroundSize: 'cover', width: 'auto', height: '100px', cursor: 'pointer', opacity: '0.7' }}>
                                 <p className='position-absolute top-50 start-50 translate-middle text-white fw-bold '>
                                     <u>+{data.images.length} Photos</u>
                                 </p>

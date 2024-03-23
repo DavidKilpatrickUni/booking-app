@@ -1,20 +1,15 @@
 import React from 'react'
+
+import { useNavigate } from 'react-router-dom'
+
 import Col from 'react-bootstrap/Col'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Carousel from 'react-bootstrap/Carousel';
-import { useNavigate } from 'react-router-dom'
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { fas } from '@fortawesome/free-solid-svg-icons'
-import { library } from '@fortawesome/fontawesome-svg-core'
 
 const Featured = ({ children, featured, myFeatured }) => {
 
     const navigate = useNavigate()
-
-    console.log(myFeatured)
-
 
     return (
         <section className='text-center text-md-start'>

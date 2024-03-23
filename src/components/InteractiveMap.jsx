@@ -1,16 +1,14 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
-import MapPopup from './MapPopup';
-
-import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet'
-import * as L from "leaflet";
 
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
 
+import MapPopup from './MapPopup';
+import MapIconBar from './MapIconBar';
+
+import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet'
+import * as L from "leaflet";
 import Shadow from '../leaflet-color-markers-master/img/marker-shadow.png'
 
 import HotelSVG from '../images/hotel-solid.svg'
@@ -19,7 +17,7 @@ import MartiniSVG from '../images/martini-glass-solid.svg'
 import UtensilsSVG from '../images/utensils-solid.svg'
 import CoffeeSVG from '../images/mug-saucer-solid.svg'
 
-import MapIconBar from './MapIconBar';
+
 
 const InteractiveMap = ({ featured }) => {
 

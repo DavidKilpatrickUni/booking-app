@@ -55,7 +55,7 @@ const PlaceCards = ({ children, features }) => {
                                     <Card.Text>
                                         <div className='d-flex justify-content-between'>
                                             <p className='fst-italic'>{place.location}</p>
-                                            <p className='badge bg-primary'>{place.reviewScore}</p>
+                                            <p className='badge bg-primary'>{place.reviewScore.toFixed(1)}</p>
                                         </div>
                                         <p className='mb-1 text-secondary'>{place.name}</p>
                                         <p>

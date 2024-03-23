@@ -37,7 +37,7 @@ const PlaceSwiperWithThumbs = ({ slide, data }) => {
 
                 {data.images.map((pic) => (
                     <SwiperSlide>
-                        <img src={pic} alt='' className='img-fluid' />
+                        <img src={pic.image} alt={pic.imageInfo} className='img-fluid' />
                     </SwiperSlide>
                 ))}
 
@@ -69,7 +69,7 @@ const PlaceSwiperWithThumbs = ({ slide, data }) => {
             >
                 {data.images.map((pic) => (
                     <SwiperSlide>
-                        <img src={pic} alt='' className='img-fluid' />
+                        <img src={pic.image} alt={pic.imageInfo} className='img-fluid' />
                     </SwiperSlide>
                 ))}
 

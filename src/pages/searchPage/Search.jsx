@@ -867,15 +867,15 @@ const Search = () => {
                 <Row>
                     <Col>
                         <Title>
-                            <h1>Search</h1>
+                            <h1>Stay Search</h1>
                         </Title>
                     </Col>
                 </Row>
-                <Row>
+                {/* <Row>
                     <Col>
                         <SearchBar locations={locations} places={places} />
                     </Col>
-                </Row>
+                </Row> */}
                 <hr />
                 <Row className='d-flex flex-column flex-md-row justify-content-center'>
                     <Col className='col-md-6 col-12 text-center text-md-start'>
@@ -888,7 +888,7 @@ const Search = () => {
                         <SearchOrder setSearchOrder={setSearchOrder} />
                     </Col>
                 </Row>
-                <Row className=''>
+                {removeSearch.length > 0 && <Row className=''>
                     <Col className='col-12 col-md-10 pt-2'>
                         {removeSearch.map((item, index) => (
                             <Button className='mx-1 mt-1' variant="outline-primary"
@@ -910,7 +910,7 @@ const Search = () => {
                         >
                             Clear Filters</Button>
                     </Col>
-                </Row>
+                </Row>}
                 <Row className='mt-1'>
                     <Col className='col-md-3 col-12 order-1 g-0'>
                         <SearchCriteriaHolder possible={orderedArray} />

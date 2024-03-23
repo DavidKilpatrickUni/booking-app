@@ -1,4 +1,7 @@
 import React from 'react'
+
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col'
 
 import { useNavigate } from 'react-router-dom'
@@ -10,10 +13,6 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
-
-
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
 
 const BigSwiper = ({ children, array4 }) => {
 
@@ -64,8 +63,6 @@ const BigSwiper = ({ children, array4 }) => {
                                 </Col>
                             </Row>
                         </Container>
-
-
                     </SwiperSlide>
                 ))}
             </Swiper>
