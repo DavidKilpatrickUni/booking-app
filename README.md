@@ -50,4 +50,6 @@ npm run start
 
 ## Image Examples Of Website
 
-<img src="./src/images/Example1.PNG" width='200' height='200' />
+<img src="./src/images/Example1.PNG" width='200' height='200' /> <img src="./src/images/Example2.PNG" width='200' height='200' /> <img src="./src/images/Example3.PNG" width='200' height='200' />
+
+<img src="./src/images/Example4.PNG" width='200' height='200' /> <img src="./src/images/Example5.PNG" width='200' height='200' /> <img src="./src/images/Example6.PNG" width='200' height='200' />
