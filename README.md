@@ -33,7 +33,8 @@ This is a reengineering / reimagination of Booking.com using React Bootstrap. Th
   - Store favourite places 
   - Upvote/downvote components such as helpfulness of question/review  
 - Be able to upload new places 
-- Be able to edit existing places 
+- Be able to edit existing places
+- Further styling of website to make it more unique and have less basic Bootstrap aesthetic through the use of SASS 
 
 ## Usage
 
@@ -45,3 +46,7 @@ This will install all code and dependencies. To view website, run:
 ```bash
 npm run start
 ```
+
+## Image Examples Of Website
+
+<img src="./images/" />
