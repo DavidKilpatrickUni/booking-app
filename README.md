@@ -1,70 +1,52 @@
-# Getting Started with Create React App
+## Booking App Website
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a reengineering / reimagination of Booking.com using React Bootstrap. There is more a focus on highlighting locations/cities and providing detail for potential explorer to these locations of what the area provides, be that stays, dining or attraction possibilities. The whole site is designed to be modular with interchangeable and interactive components to allow different styling to keep the site fresh, adaptable to certain content or changeable to meet a season/theme. 
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- Multiple image layouts to highlight content appropriately  
+- Swipers with thumbnails to view images 
+- Interactive maps with suggested locations and popups 
+- Dynamic data from a database 
+- Search functionality to find location or ‘stay’ type 
+- Different criteria to which content is displayed – most popular, highest review, most visited etc 
+- Review and question section for each place, utilising off canvas space 
+- View external file data such as pictures or menus of each place
 
-### `npm start`
+## Technology
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- JavaScript website 
+- React Framework 
+- React Bootstrap components 
+- Bootstrap Styling 
+- Swiper.js image display 
+- React Leaflet map component  
+- Country-flag-icons for flag images 
+- Google Firebase - Firestore for document database & Storage for file staorage
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Future
 
-### `npm test`
+- More detailed and extensive database data 
+- Customer login system to allow: 
+  - To certify place has been visited, to keep data accurate 
+  - Upload of review or question  
+  - Store favourite places 
+  - Upvote/downvote components such as helpfulness of question/review  
+- Be able to upload new places 
+- Be able to edit existing places
+- Further styling of website to make it more unique and have less basic Bootstrap aesthetic through the use of SASS 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Usage
 
-### `npm run build`
+Requires an IDE and node.js. Once this repository is cloned run:
+```bash
+npm install
+```
+This will install all code and dependencies. To view website, run:
+```bash
+npm run start
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Image Examples Of Website
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<img src="./images/" />
