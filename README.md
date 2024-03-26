@@ -51,4 +51,4 @@ npm run start
 ## Image Examples Of Website
 
 <img src=".src
-/images/Example1.png" />
+/images/Example1.PNG" />
