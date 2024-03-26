@@ -24,13 +24,24 @@ This is a reengineering / reimagination of Booking.com using React Bootstrap. Th
 - Country-flag-icons for flag images 
 - Google Firebase - Firestore for document database & Storage for file staorage
 
+## Future
+
+- More detailed and extensive database data 
+- Customer login system to allow: 
+  - To certify place has been visited, to keep data accurate 
+  - Upload of review or question  
+  - Store favourite places 
+  - Upvote/downvote components such as helpfulness of question/review  
+- Be able to upload new places 
+- Be able to edit existing places 
+
 ## Usage
 
 Requires an IDE and node.js. Once this repository is cloned run:
 ```bash
 npm install
 ```
-This will install all code and dependacies. To view website, run:
+This will install all code and dependencies. To view website, run:
 ```bash
 npm run start
 ```
