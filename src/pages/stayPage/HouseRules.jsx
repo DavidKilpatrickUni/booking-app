@@ -4,11 +4,8 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { fas } from '@fortawesome/free-solid-svg-icons'
-import { library } from '@fortawesome/fontawesome-svg-core'
 
 const HouseRules = ({ data }) => {
-
 
     return (
         <>
@@ -22,8 +19,6 @@ const HouseRules = ({ data }) => {
                             <FontAwesomeIcon icon={rule.icon} className='text-center' />
                             <span className='ms-2'>{rule.category}</span>
                         </Col>
-
-
                         <Col className='col-7 css-fix'>
                             <p>{rule.text}</p>
                         </Col>

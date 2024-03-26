@@ -7,7 +7,7 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Carousel from 'react-bootstrap/Carousel';
 
-const Featured = ({ children, featured, myFeatured }) => {
+const Featured = ({ children, myFeatured }) => {
 
     const navigate = useNavigate()
 
@@ -24,7 +24,7 @@ const Featured = ({ children, featured, myFeatured }) => {
                                     onClick={() => navigate(`/${myFeatured.location}/${myFeatured.category}/${myFeatured.name}/${myFeatured.refID}`)}>
                                     <img src={item.image} alt='' text="Third slide" className='img-fluid rounded-4' />
                                     <Carousel.Caption>
-                                        <h1>{featured.location}</h1>
+                                        <h1>{myFeatured.location}</h1>
                                         <p>{item.info}</p>
                                     </Carousel.Caption>
                                 </Carousel.Item>

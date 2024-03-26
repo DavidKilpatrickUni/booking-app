@@ -93,7 +93,7 @@ const InteractiveMap = ({ featured }) => {
 
                             <Marker position={[featured.geoLocation.lat, featured.geoLocation.lng]} >
                                 <Popup>
-                                    Location Centre
+                                    You Are Here
                                 </Popup>
                             </Marker>
 

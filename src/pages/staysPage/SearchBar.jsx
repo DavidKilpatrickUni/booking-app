@@ -1,20 +1,18 @@
 import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+
 import Col from 'react-bootstrap/Col'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Button from 'react-bootstrap/Button'
-import { useNavigate } from 'react-router-dom'
 
-import { doc, getDoc, updateDoc, collection, getDocs, query, where, orderBy, deleteDoc } from 'firebase/firestore'
+import { collection, getDocs } from 'firebase/firestore'
 import { db } from '../../firebase.config'
 
 const SearchBar = ({ locations, stays }) => {
 
-
-
     const [locationList, setLocationList] = useState([])
     const [stayList, setStayList] = useState([])
-
     const [formData, setFormData] = useState(null)
     const [loading, setLoading] = useState(true)
 
@@ -102,37 +100,38 @@ const SearchBar = ({ locations, stays }) => {
 
         <form onSubmit={handleSubmit}>
 
-            {!loading && <Container>
-                <Row className='d-flex flex-column flex-md-row'>
-                    <Col className='col-md-5 py-1'>
-                        <select className="form-select"
-                            onChange={handleChange}>
-                            {locationList.map((loc, index) => (
-                                <option value={loc.location} key={index}>
-                                    {loc.location}
-                                </option>
-                            ))}
-                        </select>
-                    </Col>
-                    <Col className='col-md-5 py-1'>
-                        <select className="form-select"
-                            onChange={handleChange2}>
-                            {stayList.map((stay, index) => (
-                                <option value={stay.type} key={index}>
-                                    {stay.type}
-                                </option>
-                            ))}
-                        </select>
-                    </Col>
+            {!loading &&
+                <Container>
+                    <Row className='d-flex flex-column flex-md-row'>
+                        <Col className='col-md-5 py-1'>
+                            <select className="form-select"
+                                onChange={handleChange}>
+                                {locationList.map((loc, index) => (
+                                    <option value={loc.location} key={index}>
+                                        {loc.location}
+                                    </option>
+                                ))}
+                            </select>
+                        </Col>
+                        <Col className='col-md-5 py-1'>
+                            <select className="form-select"
+                                onChange={handleChange2}>
+                                {stayList.map((stay, index) => (
+                                    <option value={stay.type} key={index}>
+                                        {stay.type}
+                                    </option>
+                                ))}
+                            </select>
+                        </Col>
 
-                    <Col className='col-md-2 d-grid py-1'>
-                        <Button variant="primary" type='submit' className="text-white">
-                            Submit
-                        </Button>
-                    </Col>
-
-                </Row>
-            </Container>}
+                        <Col className='col-md-2 d-grid py-1'>
+                            <Button variant="primary" type='submit' className="text-white">
+                                Submit
+                            </Button>
+                        </Col>
+                    </Row>
+                </Container>
+            }
 
         </form>
 

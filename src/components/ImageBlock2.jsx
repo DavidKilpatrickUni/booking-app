@@ -6,7 +6,7 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 
-const ImageBlock2 = ({ children, array2, array3, popularArray }) => {
+const ImageBlock2 = ({ children, popularArray }) => {
 
     const navigate = useNavigate()
 

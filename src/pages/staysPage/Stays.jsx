@@ -1,17 +1,18 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
 
 import SearchBar from './SearchBar'
 import Title from '../../components/Title'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
+import Spinner from 'react-bootstrap/Spinner';
+
 import ImageGrid from '../../components/ImageGrid'
 import PlaceCards from '../../components/PlaceCards'
 import AdvertBar from '../../components/AdvertBar'
 
-import { doc, getDoc, updateDoc, collection, getDocs, query, where, orderBy, deleteDoc } from 'firebase/firestore'
+import { collection, getDocs } from 'firebase/firestore'
 import { db } from '../../firebase.config'
 
 const Stays = () => {
@@ -21,9 +22,7 @@ const Stays = () => {
     const [popularArray, setPopularArray] = useState(null)
     const [ourPickArray, setOurPickArray] = useState(null)
     const [highReviewArray, setHighReviewArray] = useState(null)
-
     const [loading, setLoading] = useState(true)
-
 
     useEffect(() => {
 
@@ -112,9 +111,6 @@ const Stays = () => {
 
     }, [myStays])
 
-    // console.log(myLocations)
-    console.log(highReviewArray)
-
     const locations = [
         {
             location: 'Aberdeen',
@@ -130,122 +126,6 @@ const Stays = () => {
         },
     ]
     const stays = ['Hotel', 'Studio', 'Apartment']
-
-    const array3 = [
-        {
-            name: 'Cardiff',
-            image: 'https://images.pexels.com/photos/1088291/pexels-photo-1088291.jpeg',
-            price: 87
-        },
-        {
-            name: 'Manchester',
-            image: 'https://images.pexels.com/photos/15023016/pexels-photo-15023016/free-photo-of-aerial-view-of-manchester-town-hall.jpeg',
-            price: 81
-        },
-        {
-            name: 'Newcastle',
-            image: 'https://images.pexels.com/photos/2893285/pexels-photo-2893285.jpeg',
-            price: 79
-        },
-        {
-            name: 'Cardiff',
-            image: 'https://images.pexels.com/photos/1088291/pexels-photo-1088291.jpeg',
-            price: 98
-        },
-        {
-            name: 'Manchester',
-            image: 'https://images.pexels.com/photos/15023016/pexels-photo-15023016/free-photo-of-aerial-view-of-manchester-town-hall.jpeg',
-            price: 101
-        },
-        {
-            name: 'Newcastle',
-            image: 'https://images.pexels.com/photos/2893285/pexels-photo-2893285.jpeg',
-            price: 109
-        },
-        {
-            name: 'Cardiff',
-            image: 'https://images.pexels.com/photos/1088291/pexels-photo-1088291.jpeg',
-            price: 91
-        },
-        {
-            name: 'Manchester',
-            image: 'https://images.pexels.com/photos/15023016/pexels-photo-15023016/free-photo-of-aerial-view-of-manchester-town-hall.jpeg',
-            price: 89
-        },
-        {
-            name: 'Newcastle',
-            image: 'https://images.pexels.com/photos/2893285/pexels-photo-2893285.jpeg',
-            price: 95
-        }
-    ]
-
-    const features = [
-        {
-            name: 'Station Hotel',
-            location: 'Dundee',
-            reviewText: 'Good',
-            reviewCount: 666,
-            reviewScore: 8.5,
-            images: [
-                {
-                    image: 'https://images.pexels.com/photos/14194120/pexels-photo-14194120.jpeg'
-                },
-                {
-                    image: 'https://images.pexels.com/photos/13012302/pexels-photo-13012302.jpeg'
-                },
-                {
-                    image: 'https://images.pexels.com/photos/3061345/pexels-photo-3061345.jpeg'
-                }
-            ],
-            text: `new build wer wer we wr we we we we `,
-            stars: ['fa-star', 'fa-star', 'fa-star'],
-            price: 87
-        },
-        {
-            name: 'Holiday Inn',
-            location: 'York',
-            reviewText: 'Great',
-            reviewCount: 586,
-            reviewScore: 9.5,
-            images: [
-                {
-                    image: 'https://images.pexels.com/photos/14194120/pexels-photo-14194120.jpeg'
-                },
-                {
-                    image: 'https://images.pexels.com/photos/13012302/pexels-photo-13012302.jpeg'
-                },
-                {
-                    image: 'https://images.pexels.com/photos/3061345/pexels-photo-3061345.jpeg'
-                }
-            ],
-            text: `some place wewer wer we we we rwe rwer we we rwe`,
-            stars: ['fa-star', 'fa-star', 'fa-star', 'fa-star-half'],
-            price: 95
-        },
-        {
-            name: 'Sleeperz',
-            location: 'Leeds',
-            reviewText: 'Bad',
-            reviewCount: 300,
-            reviewScore: 7.3,
-            images: [
-                {
-                    image: 'https://images.pexels.com/photos/14194120/pexels-photo-14194120.jpeg'
-
-                },
-                {
-                    image: 'https://images.pexels.com/photos/13012302/pexels-photo-13012302.jpeg'
-
-                },
-                {
-                    image: 'https://images.pexels.com/photos/3061345/pexels-photo-3061345.jpeg'
-                }
-            ],
-            text: `great place sdfjkasdkfhlaflawe er gav b  ag w  wer`,
-            stars: ['fa-star', 'fa-star'],
-            price: 107
-        }
-    ]
 
     const adverts = [
         {
@@ -270,68 +150,80 @@ const Stays = () => {
 
     return (
         <>
-            {!loading && <Container>
-                <Row>
-                    <Col>
-                        <Title>
-                            <h1>
-                                Find Your perfect Stay
-                            </h1>
-                            <p>
-                                No Matter Your Preference We Have A Bed For You
-                            </p>
-                        </Title>
-                    </Col>
-                </Row>
+            {loading &&
+                <Container>
+                    <Row>
+                        <Col className='d-flex align-items-center justify-content-center'>
+                            <Spinner animation="border" role="status" variant="primary">
+                                <span className="visually-hidden">Loading...</span>
+                            </Spinner>
+                        </Col>
+                    </Row>
+                </Container>
+            }
 
-                <Row>
-                    <Col>
-                        <SearchBar locations={locations} stays={stays} />
-                    </Col>
-                </Row>
-                <hr />
-                <Row>
-                    <Col>
-                        <ImageGrid array3={myLocations.slice(0, 9)}>
-                            <h1>Discover Popular Stays</h1>
-                        </ImageGrid>
-                    </Col>
-                </Row >
-                <hr />
-                <Row>
-                    <Col>
-                        <PlaceCards features={ourPickArray}>
-                            <h1>Our Top Picks</h1>
-                            <p>Investigate These Stays We Love</p>
-                        </PlaceCards>
-                    </Col>
-                </Row >
+            {!loading &&
+                <Container>
+                    <Row>
+                        <Col>
+                            <Title>
+                                <h1>
+                                    Find Your perfect Stay
+                                </h1>
+                                <p>
+                                    No Matter Your Preference We Have A Bed For You
+                                </p>
+                            </Title>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col>
+                            <SearchBar locations={locations} stays={stays} />
+                        </Col>
+                    </Row>
+                    <hr />
+                    <Row>
+                        <Col>
+                            <ImageGrid array3={myLocations.slice(0, 9)}>
+                                <h1>Discover Popular Stays</h1>
+                            </ImageGrid>
+                        </Col>
+                    </Row >
+                    <hr />
+                    <Row>
+                        <Col>
+                            <PlaceCards features={ourPickArray}>
+                                <h1>Our Top Picks</h1>
+                                <p>Investigate These Stays We Love</p>
+                            </PlaceCards>
+                        </Col>
+                    </Row >
 
-                <Row>
-                    <Col>
-                        <AdvertBar adverts={adverts} />
-                    </Col>
-                </Row>
-                <hr />
-                <Row>
-                    <Col>
-                        <PlaceCards features={popularArray}>
-                            <h1>Discover Popular Stays</h1>
-                            <p>Other Explorers Visit Here</p>
-                        </PlaceCards>
-                    </Col>
-                </Row >
-                <hr />
-                <Row>
-                    <Col>
-                        <PlaceCards features={highReviewArray}>
-                            <h1>Highest Reviewed</h1>
-                            <p>Stay Somewhere Trusted</p>
-                        </PlaceCards>
-                    </Col>
-                </Row >
-
-            </Container>}
+                    <Row>
+                        <Col>
+                            <AdvertBar adverts={adverts} />
+                        </Col>
+                    </Row>
+                    <hr />
+                    <Row>
+                        <Col>
+                            <PlaceCards features={popularArray}>
+                                <h1>Discover Popular Stays</h1>
+                                <p>Other Explorers Visit Here</p>
+                            </PlaceCards>
+                        </Col>
+                    </Row >
+                    <hr />
+                    <Row>
+                        <Col>
+                            <PlaceCards features={highReviewArray}>
+                                <h1>Highest Reviewed</h1>
+                                <p>Stay Somewhere Trusted</p>
+                            </PlaceCards>
+                        </Col>
+                    </Row >
+                </Container>
+            }
         </>
     )
 }
