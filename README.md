@@ -12,6 +12,7 @@ This is a reengineering / reimagination of Booking.com using React Bootstrap. Th
 - Different criteria to which content is displayed – most popular, highest review, most visited etc 
 - Review and question section for each place, utilising off canvas space 
 - View external file data such as pictures or menus of each place
+- Responsive design
 
 ## Technology
 
@@ -49,4 +50,6 @@ npm run start
 
 ## Image Examples Of Website
 
-<img src="./images/" />
+<img src="./src/images/Example1.PNG" width='200' height='200' /> <img src="./src/images/Example2.PNG" width='200' height='200' /> <img src="./src/images/Example3.PNG" width='200' height='200' />
+
+<img src="./src/images/Example4.PNG" width='200' height='200' /> <img src="./src/images/Example5.PNG" width='200' height='200' /> <img src="./src/images/Example6.PNG" width='200' height='200' />
