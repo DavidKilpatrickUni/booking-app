@@ -664,7 +664,7 @@ const Search = () => {
                             </Col>}
 
                             <Col className='col-md-9 col-12 order-2 g-0 '>
-                                <SearchCardHolder listing={orderedArray.slice(0, cutoff)} />
+                                <SearchCardHolder data={orderedArray.slice(0, cutoff)} />
                                 {orderedArray.length > cutoff && <Button className='w-100 mt-2'
                                     onClick={() => setCutoff((prev) => prev + 2)}>Show More</Button>}
                             </Col>

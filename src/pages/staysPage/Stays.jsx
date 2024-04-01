@@ -184,7 +184,7 @@ const Stays = () => {
                     <hr />
                     <Row>
                         <Col>
-                            <ImageGrid array3={myLocations.slice(0, 9)}>
+                            <ImageGrid data={myLocations}>
                                 <h1>Discover Popular Stays</h1>
                             </ImageGrid>
                         </Col>
@@ -192,7 +192,7 @@ const Stays = () => {
                     <hr />
                     <Row>
                         <Col>
-                            <PlaceCards features={ourPickArray}>
+                            <PlaceCards data={ourPickArray}>
                                 <h1>Our Top Picks</h1>
                                 <p>Investigate These Stays We Love</p>
                             </PlaceCards>
@@ -207,7 +207,7 @@ const Stays = () => {
                     <hr />
                     <Row>
                         <Col>
-                            <PlaceCards features={popularArray}>
+                            <PlaceCards data={popularArray}>
                                 <h1>Discover Popular Stays</h1>
                                 <p>Other Explorers Visit Here</p>
                             </PlaceCards>
@@ -216,7 +216,7 @@ const Stays = () => {
                     <hr />
                     <Row>
                         <Col>
-                            <PlaceCards features={highReviewArray}>
+                            <PlaceCards data={highReviewArray}>
                                 <h1>Highest Reviewed</h1>
                                 <p>Stay Somewhere Trusted</p>
                             </PlaceCards>

@@ -7,6 +7,8 @@ import Col from 'react-bootstrap/Col'
 import { useNavigate } from 'react-router-dom'
 
 import { Swiper, SwiperSlide } from 'swiper/react';
+//import { Swiper, SwiperSlide } from 'swiper/react/swiper-react.js';
+
 import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper/modules';
 
 import 'swiper/css';

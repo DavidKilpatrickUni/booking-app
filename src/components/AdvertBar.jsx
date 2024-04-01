@@ -14,14 +14,22 @@ library.add(fas)
 const AdvertBar = ({ adverts }) => {
     return (
 
-        <Container className=''>
-
+        <Container>
             <Row className='d-flex flex-md-row flex-column d-md-flex d-none mt-3'>
                 <hr />
                 {adverts.map((advert) => (
-                    <Col className='col-md-4 py-1'>
-                        <Card className='text-bg-primary text-center h-100' >
-                            <FontAwesomeIcon icon={advert.icon} className='fs-1 pt-3' />
+                    <Col
+                        className='col-md-4 py-1'
+                        title='Advert Card'
+                        key={advert.title}
+                        id={advert.title}
+                    >
+                        <Card
+                            className='text-bg-primary text-center h-100' >
+                            <FontAwesomeIcon
+                                icon={advert.icon}
+                                className='fs-1 pt-3'
+                            />
                             <Card.Body>
                                 <Card.Title>
                                     {advert.stat}

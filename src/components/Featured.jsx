@@ -16,16 +16,29 @@ const Featured = ({ children, myFeatured }) => {
             {children}
             <Container>
                 <Row >
-                    <Col className='d-flex justify-content-center'>
-                        <Carousel style={{ maxHeight: '1200px', maxWidth: '800px' }}>
-                            {myFeatured.images.map((item) => (
+                    <Col
+                        className='d-flex justify-content-center'
+                    >
+                        <Carousel
+                            style={{ maxHeight: '1200px', maxWidth: '800px' }}
+                        >
+                            {myFeatured.images.map((item, index) => (
                                 <Carousel.Item
                                     style={{ maxHeight: '1200px', maxWidth: '800px' }}
-                                    onClick={() => navigate(`/${myFeatured.location}/${myFeatured.category}/${myFeatured.name}/${myFeatured.refID}`)}>
-                                    <img src={item.image} alt='' text="Third slide" className='img-fluid rounded-4' />
+                                    onClick={() => navigate(`/${myFeatured.location}/${myFeatured.category}/${myFeatured.name}/${myFeatured.refID}`)}
+                                    key={index}
+                                >
+                                    <img
+                                        src={item.image}
+                                        alt={item.info}
+                                        text="" className='img-fluid rounded-4' />
                                     <Carousel.Caption>
-                                        <h1>{myFeatured.location}</h1>
-                                        <p>{item.info}</p>
+                                        <h1>
+                                            {myFeatured.location}
+                                        </h1>
+                                        <p>
+                                            {item.info}
+                                        </p>
                                     </Carousel.Caption>
                                 </Carousel.Item>
                             ))}

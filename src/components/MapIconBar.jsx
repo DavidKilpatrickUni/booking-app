@@ -5,13 +5,11 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { fas } from '@fortawesome/free-solid-svg-icons'
-import { library } from '@fortawesome/fontawesome-svg-core'
 
 const MapIconBar = () => {
 
 
-    const array = [
+    const mapIcons = [
         {
             icon: 'fa-hotel',
             color: 'primary',
@@ -42,15 +40,23 @@ const MapIconBar = () => {
     return (
         <>
             <Container>
-                <Row className='mt-3 d-flex justify-content-center'>
-
-                    {array.map((item) => (
-                        <Col className={`col-md-2 text-center text-${item.color}`} style={{ cursor: 'pointer' }}>
+                <Row
+                    className='mt-3 d-flex justify-content-center'
+                >
+                    {mapIcons.map((item) => (
+                        <Col
+                            className={`col-md-2 text-center text-${item.color}`}
+                            style={{ cursor: 'pointer' }}
+                            key={`${item.name} Icon`}
+                            title='Map Icon'
+                        >
                             <FontAwesomeIcon
                                 icon={item.icon}
                                 className='fs-1'
                             />
-                            <p className={`d-md-block d-none text-${item.color}`}>
+                            <p
+                                className={`d-md-block d-none text-${item.color}`}
+                            >
                                 {item.name}
                             </p>
                         </Col>

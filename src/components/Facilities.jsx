@@ -15,20 +15,44 @@ const Facilities = ({ facilities }) => {
     return (
         <section>
             <Container>
-                <Row className=''>
-                    <h1 className='text-center text-md-start'>Facilities</h1>
+                <Row
+                    className=''
+                >
+                    <h1
+                        className='text-center text-md-start'
+                    >
+                        Facilities
+                    </h1>
                     <hr />
                     {facilities.map((facility) => (
-                        <>
-                            <Col className='col-md-4 col-6 mb-1'>
-                                <h5 className='mb-2'><FontAwesomeIcon icon={facility.icon} className='me-2 text-primary' />{facility.category}</h5>
-                                {facility.items.map((item) => (
-                                    <p>            <FontAwesomeIcon icon='fa-check' className='me-2 text-success' />{item}</p>
-                                ))}
-                            </Col >
-                        </>
+                        <Col
+                            className='col-md-4 col-6 mb-1'
+                            key={facility.category}
+                            title='Facility List'
+                        >
+                            <h5 className='mb-2'
+                            >
+                                <FontAwesomeIcon
+                                    icon={facility.icon}
+                                    className='me-2 text-primary'
+                                    title='Facility Icon'
+                                />
+                                {facility.category}
+                            </h5>
+                            {facility.items.map((item) => (
+                                <p
+                                    key={item}
+                                >
+                                    <FontAwesomeIcon
+                                        icon='fa-check'
+                                        className='me-2 text-success'
+                                        title='List Tick'
+                                    />
+                                    {item}
+                                </p>
+                            ))}
+                        </Col >
                     ))}
-
                 </Row>
             </Container>
         </section >

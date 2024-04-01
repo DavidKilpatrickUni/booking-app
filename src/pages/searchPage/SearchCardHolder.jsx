@@ -2,10 +2,10 @@ import React from 'react'
 
 import LongCard from '../../components/LongCard'
 
-const SearchCardHolder = ({ listing }) => {
+const SearchCardHolder = ({ data }) => {
     return (
         <div>
-            <LongCard listing={listing} />
+            <LongCard data={data} />
         </div>
     )
 }

@@ -5,17 +5,12 @@ import { useParams } from 'react-router-dom'
 import Col from 'react-bootstrap/Col'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
-import Button from 'react-bootstrap/Button'
-
 
 import SearchBar from './SearchBar'
 import BigSwiper from '../../components/BigSwiper'
 import SmallSwiper from '../../components/SmallSwiper'
 import Title from '../../components/Title'
 import AdvertBar from '../../components/AdvertBar'
-
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper/modules';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -30,8 +25,6 @@ import Spinner from 'react-bootstrap/Spinner';
 
 
 const Home = () => {
-
-
 
     const [myLocations, setMyLocations] = useState(null)
     const [myStays, setMyStays] = useState(null)
@@ -140,108 +133,6 @@ const Home = () => {
 
     }, [myLocations])
 
-    const array4 = [
-        {
-            message: '20% Off Early Hotel Bookings',
-            image: 'https://images.pexels.com/photos/707581/pexels-photo-707581.jpeg'
-        },
-        {
-            message: 'One Free Child Entry Per Paying Adult At Selected Attractions',
-            image: 'https://images.pexels.com/photos/1005774/pexels-photo-1005774.jpeg'
-        },
-        {
-            message: '2 For 1 Meal Deals',
-            image: 'https://images.pexels.com/photos/291767/pexels-photo-291767.jpeg'
-        }
-    ]
-
-    // const popularArray = [
-    //     {
-    //         name: 'Edinburgh',
-    //         image: 'https://images.pexels.com/photos/7813912/pexels-photo-7813912.jpeg'
-    //     },
-    //     {
-    //         name: 'London',
-    //         image: 'https://images.pexels.com/photos/258117/pexels-photo-258117.jpeg'
-    //     },
-    //     {
-    //         name: 'Cardiff',
-    //         image: 'https://images.pexels.com/photos/1088291/pexels-photo-1088291.jpeg'
-    //     },
-    //     {
-    //         name: 'Manchester',
-    //         image: 'https://images.pexels.com/photos/15023016/pexels-photo-15023016/free-photo-of-aerial-view-of-manchester-town-hall.jpeg'
-    //     },
-    //     {
-    //         name: 'Newcastle',
-    //         image: 'https://images.pexels.com/photos/2893285/pexels-photo-2893285.jpeg'
-    //     }
-    // ]
-
-    const array2 = [
-        {
-            name: 'Edinburgh',
-            image: 'https://images.pexels.com/photos/7813912/pexels-photo-7813912.jpeg'
-        },
-        {
-            name: 'London',
-            image: 'https://images.pexels.com/photos/258117/pexels-photo-258117.jpeg'
-        }
-    ]
-
-    const array3 = [
-        {
-            name: 'Cardiff',
-            image: 'https://images.pexels.com/photos/1088291/pexels-photo-1088291.jpeg'
-        },
-        {
-            name: 'Manchester',
-            image: 'https://images.pexels.com/photos/15023016/pexels-photo-15023016/free-photo-of-aerial-view-of-manchester-town-hall.jpeg'
-        },
-        {
-            name: 'Newcastle',
-            image: 'https://images.pexels.com/photos/2893285/pexels-photo-2893285.jpeg'
-        }
-    ]
-
-    const array = [
-        {
-            name: 'Edinburgh',
-            image: 'https://images.pexels.com/photos/7813912/pexels-photo-7813912.jpeg',
-            places: 1034
-        },
-        {
-            name: 'London',
-            image: 'https://images.pexels.com/photos/258117/pexels-photo-258117.jpeg',
-            places: 1564
-        },
-        {
-            name: 'Cardiff',
-            image: 'https://images.pexels.com/photos/1088291/pexels-photo-1088291.jpeg',
-            places: 894
-        },
-        {
-            name: 'Manchester',
-            image: 'https://images.pexels.com/photos/15023016/pexels-photo-15023016/free-photo-of-aerial-view-of-manchester-town-hall.jpeg',
-            places: 970
-        },
-        {
-            name: 'Newcastle',
-            image: 'https://images.pexels.com/photos/2893285/pexels-photo-2893285.jpeg',
-            places: 811
-        },
-        {
-            name: 'Glasgow',
-            image: 'https://images.pexels.com/photos/11142526/pexels-photo-11142526.jpeg',
-            places: 1294
-        },
-        {
-            name: 'York',
-            image: 'https://images.pexels.com/photos/18381522/pexels-photo-18381522/free-photo-of-historic-york-minster-in-england.jpeg',
-            places: 768
-        }
-    ]
-
     const locations = ['Edinburgh', 'London', 'Cardiff']
     const places = ['Stays', 'Attractions', 'Dining']
 
@@ -302,7 +193,7 @@ const Home = () => {
                 <hr />
                 {popularArray && <Row>
                     <Col>
-                        <ImageBlock array2={array2} array3={array3} popularArray={popularArray}>
+                        <ImageBlock popularArray={popularArray}>
                             <h1>Popular Locations</h1>
                             <p>Explorers Loving These Areas</p>
                         </ImageBlock>

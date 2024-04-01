@@ -12,8 +12,6 @@ import 'swiper/css/scrollbar';
 import { useNavigate } from 'react-router-dom'
 import ReviewCard from './ReviewCard';
 
-
-
 const SmallSwiper = ({ children, array, reviews }) => {
 
 

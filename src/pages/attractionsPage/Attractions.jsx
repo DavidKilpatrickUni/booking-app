@@ -187,7 +187,7 @@ const Attractions = () => {
                     <hr />
                     <Row>
                         <Col>
-                            <ImageGrid2 array3={popularArray}>
+                            <ImageGrid2 data={popularArray}>
                                 <h1>Discover Popular Attractions</h1>
                             </ImageGrid2>
                         </Col>

@@ -158,7 +158,7 @@ const Dining = () => {
                     </Row>
                     <Row>
                         <Col>
-                            <PlaceHighlightsBlock data={myData}></PlaceHighlightsBlock>
+                            <PlaceHighlightsBlock data={myData.highlights}></PlaceHighlightsBlock>
                         </Col>
                     </Row>
                     <hr />
